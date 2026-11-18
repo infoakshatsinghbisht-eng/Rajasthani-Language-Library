@@ -50,7 +50,7 @@ Rajasthani maintains the classical Indo-Aryan distinction between:
 ---
 
 ## 3. Digitized Primary Corpus Sources
-Downloaded full-text transcripts stored in `data_sources/raw_texts/` (over 9.5 MB primary text data):
+Downloaded full-text transcripts stored in `data_sources/raw_texts/` (over 13.3 MB primary text data across 16 foundational texts):
 1. `grierson_lsi_vol9_rajasthani_1908.txt` (1.03 MB): *LSI Vol. IX Part II: Rajasthani & Gujarati*, Sir George Grierson.
 2. `maheshwari_rajasthani_bhasha_sahitya_1960.txt` (2.15 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Hiralal Maheshwari.
 3. `chatterji_rajasthani_bhasha_1949.txt` (107 KB): *Rajasthani Bhasha*, Dr. Suniti Kumar Chatterji.
@@ -58,6 +58,69 @@ Downloaded full-text transcripts stored in `data_sources/raw_texts/` (over 9.5 M
 5. `ramkrishan_hindi_rajasthani_tulnatmak_1977.txt` (780 KB): *Hindi Aur Rajasthani Bhasha Ka Tulnatmak Adhyan*, Dr. Ramkrishan Sharma.
 6. `saraswat_dingal_geet_1960.txt` (445 KB): *Dingal Geet*, Rawat Saraswat.
 7. `bhati_dingal_geet_sahitya_1961.txt` (1.41 MB): *Dingal Geet Sahitya*, Dr. Narayansingh Bhati.
+8. `chandra_singh_loo_1955.txt` (78 KB): *Loo (Rajasthani Bhasha Ka Ritu Kavya)*, Chandra Singh Birbhadur.
+9. `menariya_rajasthani_rooprekha_1953.txt` (254 KB): *Rajasthani Bhasha Ki Rooprekha*, Purushottam Menariya.
+10. `bhati_rajasthani_madhyakal_1954.txt` (1.77 MB): *Rajasthani Sahitya Ka Madhyakal*, Dr. Narayansingh Bhati.
+11. `prabhakar_sahitya_sanskriti_1968.txt` (699 KB): *Rajasthani Sahitya Aur Sanskriti*, Manohar Prabhakar.
+12. `in.ernet.dli.2015.321330_2015.321330.Rajasthani-Bhasha_djvu.txt` (1.35 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Narayansingh Bhati.
+13. `in.ernet.dli.2015.442115_2015.442115.Rajasthani-Bhasha_djvu.txt` (564 KB): *Rajasthani Bhasha, Sahitya, Sanskriti*, Dr. Ramprasad Dadhich (1986).
+14. `in.ernet.dli.2015.308914_2015.308914.Rajasthani-Bhasha_djvu.txt` (2.11 MB): *Rajasthani Bhasha Aur Sahitya (Vol II)*.
+15. `in.ernet.dli.2015.325506_2015.325506.Loo-rajasthani_djvu.txt` (78 KB): *Loo Ritu Kavya Edition II*.
+16. `in.ernet.dli.2015.348572_2015.348572.Rajasthani-Bhasha_djvu.txt` (254 KB): *Rajasthani Bhasha Manyta Ka Prasan*.
+
+---
+
+## 4. Traditional Lifecycle Rituals & Cultural Encyclopedia
+- **Pregnancy & Natal Rites (8 categories)**:
+  - सीमंतोन्नयन / अग्यारणी / आठवां (Agharni / Aathwan - 8th month pregnancy ceremony)
+  - सांथी रो मांडणो (Swastika & protective neem leaves threshold ritual)
+  - छठी पूजन (Vidhata / Bemata destiny inscription on 6th night)
+  - नामकरण संस्कार (Astrological constellation naming rite)
+  - कुआँ पूजन / जलवा पूजन (Post-partum water goddess veneration)
+  - जड़ूलो (Kuldevi temple tonsure/mundan)
+  - ढूंढ़ (First Holi protective rite by Mama)
+  - कर्णवेध (Acupressure ear-piercing for gold murki/bali)
+- **Wedding Ceremonies (14 categories)**:
+  - सगाई / रोक (Betrothal), टीका / दस्तूर (Chivalric engagement), लगन पत्रिका (Astrological letter)
+  - चाक पूजना (Potter's wheel ceremony), बान बैठना अर पीठी (Haldi ubtan purification)
+  - माहेरो / भात (Maternal uncle financial and chunari offering), रातीजोगा (Matriarch night vigil)
+  - बिंदौरी / बन्दोली (Horseback procession), सामेला (Barat reception), तोरण मारना (Heroic archway strike)
+  - हथलेवा (Sacred hand joining), फेरा अर सप्तपदी (Seven circumambulations), सीख अर विदाई (Bridal farewell)
+  - कंकण-डोरा खोलना अर जुआ-जुई (Post-wedding bonding games), पगफेरा / मुकलावा (First homecoming)
+- **Seasonal Folk Observances**:
+  - गणगौर (Isar-Gauri worship), तीज (Hariyali & Kajli Teej), शीतला अष्टमी (Basoda / cold food feast)
+  - आखा तीज (Agricultural new year & Khichda), बछ बारस (Cow-calf veneration), गोगा नवमी, तेजा दशमी, रामदेवरा यात्रा.
+- **Traditional Ornaments & Jewelry (40+ items)**:
+  - Head/Forehead: रखड़ी / बोरलो, शीशफूल, मेमंद, टीकी, दामिनी / तावित, सांकळी.
+  - Ears: झुमका, कर्णफूल, ओगण्या, सुरलिया, पीपलपत्ता, टोटी, झेला, मुरकी (men's earring).
+  - Nose: नथ, बेसरी (Bani Thani style), लोंग, कांटा, चुन्नी / फीणी.
+  - Neck: आड़ (Rajputi square choker), तिमणियो, चंपाकली, मांदळियो, हंसली, कंठी, गलपट्टा, मोहनमाला / चंदनहार, तुलसी.
+  - Arms & Wrists: बाजूबंद, टड्डा / अणत, हाथीदांत रो चूड़ो, गोखरू, बंगड़ी, पाटला, नौगरी, पूंछी, हथफूल.
+  - Fingers: अरसी (thumb mirror ring!), बीटी / मूंदड़ी, छल्ला.
+  - Waist: कंदोरो / तगड़ी, करधनी, सटका, कणकती.
+  - Feet & Ankles (pure silver): पायल / झांझर, आंवळा, नेवरी, रमझोल, तोड़ा, लंगर, बिछिया, फोलरी, चुटकी, हीरनासैन.
+
+---
+
+## 5. Web UI & REST API Endpoints
+Run the built-in HTTP server:
+```bash
+rajasthani web --port 8000
+```
+Or programmatically:
+```python
+import rajasthani
+rajasthani.run_server(port=8000)
+```
+Interactive Endpoints:
+- `GET /api/translate?text=...&dialect=...` - Universal translator
+- `GET /api/conjugate?verb=...&tense=...` - Morphological verb conjugator
+- `GET /api/dictionary?q=...` - Full-text lexicon search
+- `GET /api/numbers?val=...` - Number to Devanagari words & digits
+- `GET /api/rituals?category=...` - Traditional lifecycle rituals
+- `GET /api/ornaments?part=...` - Traditional head-to-toe jewelry
+- `GET /api/syntax` - Structured syntax, split-ergativity, and dialect rules
+- `GET /api/corpus` - Catalog of 16 digitized historical texts
 8. `chandra_singh_loo_1955.txt` (78 KB): *Loo (Rajasthani Bhasha Ka Ritu Kavya)*, Chandra Singh.
 9. `menariya_rajasthani_rooprekha_1953.txt` (254 KB): *Rajasthani Bhasha Ki Rooprekha*, Purushottam Menariya.
 10. `bhati_rajasthani_madhyakal_1954.txt` (1.77 MB): *Rajasthani Sahitya Ka Madhyakal*, Dr. Narayansingh Bhati.
