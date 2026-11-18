@@ -611,6 +611,102 @@ class SyntaxEngine:
             "explanation": f"Past transitive verb '{verb}' agrees with direct object '{direct_object}' ({obj_gender} {obj_number}), while subject '{subject}' takes ergative case '{subj_erg}'."
         }
 
+    def build_manner_correlative(self, manner_clause: str, result_clause: str) -> str:
+        """
+        Builds adverbial correlative sentences of manner (रीतिवाचक सापेक्ष वाक्य):
+        Formula: जियां <manner_clause>, तियां <result_clause>।
+        Example: 'जियां कह्यो, तियां कर्यो।'
+        """
+        m = manner_clause.strip().rstrip("।").rstrip(",")
+        r = result_clause.strip().rstrip("।")
+        if not m.startswith("जियां "):
+            m = f"जियां {m}"
+        if not r.startswith("तियां "):
+            r = f"तियां {r}"
+        return f"{m}, {r}।"
+
+    def build_habitual_aspect(
+        self,
+        subject: str,
+        verb: str,
+        object_noun: Optional[str] = None,
+        frequency: str = "रोज सवेरै",
+    ) -> str:
+        """
+        Constructs authentic habitual and frequentative aspectual clauses:
+        Formula: <subject> <frequency> (<object>) <verb_root>वा लाग्यो / करै।
+        Example: 'वो रोज सवेरै पोथी बांचवा लाग्यो।'
+        """
+        subj = subject.strip()
+        root = extract_root(verb)
+        obj_part = f"{object_noun.strip()} " if object_noun else ""
+        return f"{subj} {frequency} {obj_part}{root}वा लाग्यो।"
+
+    def transform_interrogative(
+        self,
+        sentence: str,
+        question_type: str = "polar",
+        target_element: Optional[str] = None,
+    ) -> str:
+        """
+        Transforms declarative Rajasthani sentences into authentic interrogative questions:
+        - 'polar': Prepends 'कांईं ' (e.g. 'कांईं राम पोथी पढ़ै है?')
+        - 'content': Replaces or injects interrogative WH-words (कद, कठे, कूण, क्यूं, कियां).
+        """
+        s = sentence.strip().rstrip("।").rstrip("?").strip()
+        q = question_type.lower()
+        if q == "polar":
+            if not s.startswith("कांईं "):
+                return f"कांईं {s}?"
+            return f"{s}?"
+
+        target = (target_element or "when").lower()
+        wh_map = {
+            "when": "कद",
+            "where": "कठे",
+            "who": "कूण",
+            "why": "क्यूं",
+            "how": "कियां",
+        }
+        wh = wh_map.get(target, "कांईं")
+        words = s.split()
+        if target == "who" and words:
+            words[0] = "कूण"
+            return " ".join(words) + "?"
+        elif len(words) >= 2:
+            words.insert(-1, wh)
+            return " ".join(words) + "?"
+        return f"{s} {wh}?"
+
+    def build_negative_optative(self, target: str, calamity: str = "बुरो") -> str:
+        """
+        Constructs traditional Rajasthani protective negative optatives warding off evil/apashakun:
+        Example: 'भगवान थारो बुरो नीं करै!'
+        """
+        t = target.strip()
+        cal = calamity.strip()
+        return f"भगवान {t} रो {cal} नीं करै!"
+
+    def attach_compound_postposition(self, noun: str, postposition: str = "along_with") -> str:
+        """
+        Attaches complex compound postpositions to oblique nouns or pronouns:
+        - 'along_with': रै सागै (e.g., 'राम रै सागै')
+        - 'because_of': रै कारणै (e.g., 'बरसात रै कारणै')
+        - 'without': रै बिना (e.g., 'पाणी रै बिना')
+        - 'instead_of': रै बद्लै (e.g., 'गेहूँ रै बद्लै')
+        - 'for_sake_of': रै खातर (e.g., 'मातृभूमि रै खातर')
+        """
+        n = noun.strip()
+        pp_map = {
+            "along_with": "रै सागै",
+            "because_of": "रै कारणै",
+            "without": "रै बिना",
+            "instead_of": "रै बद्लै",
+            "for_sake_of": "रै खातर",
+        }
+        pp = pp_map.get(postposition.lower(), "रै सागै")
+        return f"{n} {pp}"
+
     def build_counterfactual_conditional(
         self,
         condition_clause: str,
@@ -950,3 +1046,41 @@ def apply_ergative_construction(
     return SyntaxEngine().apply_ergative_construction(
         subject, direct_object, verb, obj_gender=obj_gender, obj_number=obj_number
     )
+
+
+def build_manner_correlative(manner_clause: str, result_clause: str) -> str:
+    """Convenience function: constructs Rajasthani manner correlative clause (जियां... तियां)."""
+    return SyntaxEngine().build_manner_correlative(manner_clause, result_clause)
+
+
+def build_habitual_aspect(
+    subject: str,
+    verb: str,
+    object_noun: Optional[str] = None,
+    frequency: str = "रोज सवेरै",
+) -> str:
+    """Convenience function: constructs Rajasthani habitual/frequentative sentence."""
+    return SyntaxEngine().build_habitual_aspect(
+        subject, verb, object_noun=object_noun, frequency=frequency
+    )
+
+
+def transform_interrogative(
+    sentence: str,
+    question_type: str = "polar",
+    target_element: Optional[str] = None,
+) -> str:
+    """Convenience function: transforms declarative sentence into interrogative question."""
+    return SyntaxEngine().transform_interrogative(
+        sentence, question_type=question_type, target_element=target_element
+    )
+
+
+def build_negative_optative(target: str, calamity: str = "बुरो") -> str:
+    """Convenience function: builds protective negative optative blessing."""
+    return SyntaxEngine().build_negative_optative(target, calamity=calamity)
+
+
+def attach_compound_postposition(noun: str, postposition: str = "along_with") -> str:
+    """Convenience function: attaches compound postposition to noun/pronoun."""
+    return SyntaxEngine().attach_compound_postposition(noun, postposition=postposition)

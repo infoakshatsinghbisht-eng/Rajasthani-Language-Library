@@ -145,6 +145,11 @@ from rajasthani.grammar import (
     build_dubitative_sentence,
     connect_discourse,
     apply_ergative_construction,
+    build_manner_correlative,
+    build_habitual_aspect,
+    transform_interrogative,
+    build_negative_optative,
+    attach_compound_postposition,
 )
 
 # Lexicon & Dictionary
@@ -347,6 +352,11 @@ __all__ = [
     "build_dubitative_sentence",
     "connect_discourse",
     "apply_ergative_construction",
+    "build_manner_correlative",
+    "build_habitual_aspect",
+    "transform_interrogative",
+    "build_negative_optative",
+    "attach_compound_postposition",
     # Lexicon
     "Word",
     "Dictionary",

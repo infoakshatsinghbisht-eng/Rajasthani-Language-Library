@@ -56,6 +56,11 @@ from rajasthani.grammar.syntax import (
     build_dubitative_sentence,
     connect_discourse,
     apply_ergative_construction,
+    build_manner_correlative,
+    build_habitual_aspect,
+    transform_interrogative,
+    build_negative_optative,
+    attach_compound_postposition,
 )
 
 __all__ = [
@@ -117,4 +122,9 @@ __all__ = [
     "build_dubitative_sentence",
     "connect_discourse",
     "apply_ergative_construction",
+    "build_manner_correlative",
+    "build_habitual_aspect",
+    "transform_interrogative",
+    "build_negative_optative",
+    "attach_compound_postposition",
 ]

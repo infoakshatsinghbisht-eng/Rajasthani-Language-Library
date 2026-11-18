@@ -47,7 +47,7 @@ class TestLexicon(unittest.TestCase):
 
     def test_word_count(self):
         words = self.d.get_all_words()
-        self.assertTrue(len(words) >= 1500)
+        self.assertTrue(len(words) >= 1800)
 
     def test_morphology_paradigms(self):
         p_noun = rajasthani.generate_noun_paradigm("घोड़ो")

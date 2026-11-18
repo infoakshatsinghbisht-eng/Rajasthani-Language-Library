@@ -10,7 +10,12 @@ A standard-library-style computational linguistics toolkit, translator, and gram
 2. **Morphological Verb Conjugator & Syntax Engine**:
    - Conjugates verbs across tenses (Present, Past, Future, Continuous, Presumptive, Imperative).
    - Compound verbs with aspectual vectors (`rajasthani.build_compound_verb` - `खाय लियो`, `दे दीनो`, `चाल पड़्यो`, `मार नांख्यो`).
-   - Correlative complex clauses (`rajasthani.build_complex_sentence` - `जे... तो`, `जद... तद`, `जको... वो`, `जठै... वठै`, `जियां... तियां`).
+   - Correlative complex clauses (`rajasthani.build_complex_sentence` - `जे... तो`, `जद... तद`, `जको... वो`, `जठै... वठै`).
+   - Adverbial manner correlatives (`rajasthani.build_manner_correlative` - `जियां कह्यो, तियां कर्यो।`).
+   - Habitual / frequentative aspect builder (`rajasthani.build_habitual_aspect` - `वो रोज सवेरै पोथी बांचवा लाग्यो।`).
+   - Interrogative transformations (`rajasthani.transform_interrogative` - polar: `कांईं राम पोथी पढ़ै है?`, content: `राम कद जासी?`).
+   - Protective negative optatives (`rajasthani.build_negative_optative` - `भगवान थारो रो बुरो नीं करै!`).
+   - Compound postposition synthesis (`rajasthani.attach_compound_postposition` - `रै सागै`, `रै कारणै`, `रै बिना`, `रै खातर`).
    - Past counterfactual conditionals (`rajasthani.build_counterfactual_conditional` - `जे मेह बरसतो, तो अकाल नीं पड़तो`).
    - Benedictions and optative wishes (`rajasthani.build_optative` - `भगवान थारो भलो करै!`).
    - Classical folk vat narrative builder (`rajasthani.build_vat_narrative` - authentic story discourse).
@@ -27,9 +32,9 @@ A standard-library-style computational linguistics toolkit, translator, and gram
    - Imperative directives across 4 politeness tiers (`rajasthani.build_imperative` - intimate, familiar, polite, honorific).
    - Pronoun clusivity conversion (`rajasthani.convert_clusivity` - `आपां` inclusive vs `म्हे` exclusive).
 3. **Mega Lexicon, Idioms & Folklore**:
-   - **1,512+** cataloged and fully verified words with Devanagari, English, Hindi, POS, gender, dialect, and example sentences across 55 categories.
-   - **52 authentic idioms** (मुहावरे) with cultural contexts.
-   - **51 traditional proverbs** (कहावतें / औखाणा).
+   - **1,813+** cataloged and fully verified words with Devanagari, English, Hindi, POS, gender, dialect, and example sentences across 55+ categories.
+   - **60 authentic idioms** (मुहावरे) with cultural contexts.
+   - **60 traditional proverbs** (कहावतें / औखाणा).
    - **25 folk riddles** (पहेलियाँ / आड़ी / बुझावळ).
 4. **Kinship & Clan Taxonomy (`rajasthani.resolve_kinship`)**:
    - 58 distinct relationships across patrilineal, matrilineal, affinal (`साढू`, `नणदोई`, `ब्याई`, `ब्याण`), sworn (`धरम-भाई`, `पगड़ी-बदल भाई`), and wedding companions (`कामोतर`, `ओळंदी`).
@@ -38,11 +43,11 @@ A standard-library-style computational linguistics toolkit, translator, and gram
    - 53 traditional head-to-toe ornaments (`रखड़ी`, `बोरलो`, `शीशफूल`, `आड़`, `तिमणियो`, `गोखरू`, `आंवळा`, `रमझोल`, `बिछिया`).
 6. **Numbers & Numerals (`rajasthani.num_to_words`)**:
    - Full integer to word conversion (0 to 100,000,000+), Devanagari numerals (०-९), ordinals, and fractions.
-7. **Digitized Primary Corpus (50 Historical Files, ~59.25 MB, 47 Cataloged Works)**:
-   - Complete transcripts in `data_sources/raw_texts/` including *Rajasthani Sabad Kos* (Vols 2-1, 2-2 & 4 by Dr. Sitaram Lalas), *Rajasthani Kahawat Kosh* (Bhagirath Kanoria), *Parmpara Rajasthani Baat-sangrah* (Dr. Narayansingh Bhati), *Rajasthani Lokotsav* (Gindaram Varma), *Rajasthani Gadhya-Sahitya* (Dr. Shivswaroop Sharma), *Rajasthani Gadh Vikas Aur Prakash* (Dr. Narendra Bhanawat), *Rajasthani Padh Sangrah* (Komal Kothari), *Hadi Shatak* (Kavi Nathusingh), *Dhola Maru Ra Dhoha*, *Kanhadade Prabandha*, *Chhanda Rau Jeta Si Ro*, *Veli Krisan Rukmani Ri*, *Veer Satsai*, *Parampra Dingal Kosh*, and Grierson's *LSI*.
+7. **Digitized Primary Corpus (56 Historical Files, ~64.02 MB, 53 Cataloged Works)**:
+   - Complete transcripts in `data_sources/raw_texts/` including *A Dictionary Of Rajasthani Proverbs* (Bijaydan Detha "Biji"), *Rajasthani Vratkathae* (Mohanlal Purohit), *Rajasthani Sanskrati Ra Chitram* (Jahur Khan Mehar), *Dalpat Vilas* (Rawat Saraswat), *Rajasthani Sabad Kos* (Vols 2-1, 2-2 & 4 by Dr. Sitaram Lalas), *Rajasthani Kahawat Kosh* (Bhagirath Kanoria), *Parmpara Rajasthani Baat-sangrah* (Dr. Narayansingh Bhati), *Rajasthani Lokotsav* (Gindaram Varma), *Rajasthani Gadhya-Sahitya* (Dr. Shivswaroop Sharma), *Rajasthani Gadh Vikas Aur Prakash* (Dr. Narendra Bhanawat), *Rajasthani Padh Sangrah* (Komal Kothari), *Hadi Shatak* (Kavi Nathusingh), *Dhola Maru Ra Dhoha*, *Kanhadade Prabandha*, *Chhanda Rau Jeta Si Ro*, *Veli Krisan Rukmani Ri*, *Veer Satsai*, *Parampra Dingal Kosh*, and Grierson's *LSI*.
 8. **Interactive Web UI & CLI**:
    - Built-in zero-dependency web server (`rajasthani web --port 8000`) with REST API and responsive 7-tab dashboard.
-   - **92 passing unit tests** verifying all grammar, lexicon, syntax, and folklore modules.
+   - **100 passing unit tests** verifying all grammar, lexicon, syntax, and folklore modules.
 
 ## Installation
 

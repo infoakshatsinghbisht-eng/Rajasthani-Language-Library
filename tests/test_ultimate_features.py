@@ -249,10 +249,70 @@ class TestUltimateFeatures(unittest.TestCase):
 
     def test_proverbs_and_idioms_scale(self):
         proverbs = rajasthani.get_proverbs()
-        self.assertGreaterEqual(len(proverbs), 50)
+        self.assertGreaterEqual(len(proverbs), 60)
 
         idioms = rajasthani.get_idioms()
-        self.assertGreaterEqual(len(idioms), 50)
+        self.assertGreaterEqual(len(idioms), 60)
+
+    def test_wave10_texts_and_corpus_catalog(self):
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        cat_file = os.path.join(base_dir, "data_sources", "corpus_catalog.json")
+        with open(cat_file, "r", encoding="utf-8") as f:
+            cat = json.load(f)
+        self.assertGreaterEqual(len(cat), 50)
+
+        raw_dir = os.path.join(base_dir, "data_sources", "raw_texts")
+        files = os.listdir(raw_dir)
+        total_bytes = sum(os.path.getsize(os.path.join(raw_dir, f)) for f in files)
+        self.assertGreaterEqual(total_bytes, 60 * 1024 * 1024)
+
+    def test_manner_correlative(self):
+        mc = rajasthani.build_manner_correlative("कह्यो", "कर्यो")
+        self.assertEqual(mc, "जियां कह्यो, तियां कर्यो।")
+
+    def test_habitual_aspect(self):
+        hab = rajasthani.build_habitual_aspect("वो", "बांचणो", object_noun="पोथी", frequency="रोज सवेरै")
+        self.assertEqual(hab, "वो रोज सवेरै पोथी बांचवा लाग्यो।")
+
+    def test_interrogative_transformations(self):
+        polar = rajasthani.transform_interrogative("राम पोथी पढ़ै है", question_type="polar")
+        self.assertEqual(polar, "कांईं राम पोथी पढ़ै है?")
+
+        content_when = rajasthani.transform_interrogative("राम काल जासी", question_type="content", target_element="when")
+        self.assertIn("कद", content_when)
+
+        content_who = rajasthani.transform_interrogative("राम काल जासी", question_type="content", target_element="who")
+        self.assertTrue(content_who.startswith("कूण"))
+
+    def test_negative_optative(self):
+        no = rajasthani.build_negative_optative("थारो", calamity="बुरो")
+        self.assertEqual(no, "भगवान थारो रो बुरो नीं करै!")
+
+    def test_compound_postpositions(self):
+        pp1 = rajasthani.attach_compound_postposition("राम", postposition="along_with")
+        self.assertEqual(pp1, "राम रै सागै")
+        pp2 = rajasthani.attach_compound_postposition("बरसात", postposition="because_of")
+        self.assertEqual(pp2, "बरसात रै कारणै")
+        pp3 = rajasthani.attach_compound_postposition("पाणी", postposition="without")
+        self.assertEqual(pp3, "पाणी रै बिना")
+        pp4 = rajasthani.attach_compound_postposition("मातृभूमि", postposition="for_sake_of")
+        self.assertEqual(pp4, "मातृभूमि रै खातर")
+
+    def test_weaponry_lexicon(self):
+        w1 = rajasthani.lookup("खांडो")
+        self.assertIsNotNone(w1)
+        self.assertEqual(w1.category, "weapons")
+        w2 = rajasthani.lookup("सिरोही")
+        self.assertIsNotNone(w2)
+        self.assertIn("sword", w2.english.lower())
+
+    def test_heritage_crafts_and_architecture(self):
+        c1 = rajasthani.lookup("उस्ता कला")
+        self.assertIsNotNone(c1)
+        self.assertEqual(c1.category, "crafts")
+        a1 = rajasthani.lookup("बारदरी")
+        self.assertIsNotNone(a1)
+        self.assertEqual(a1.category, "architecture")
 
 
 if __name__ == "__main__":
