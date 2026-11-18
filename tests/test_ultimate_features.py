@@ -50,12 +50,14 @@ class TestUltimateFeatures(unittest.TestCase):
 
     def test_idioms_catalog(self):
         idioms = rajasthani.get_idioms()
-        self.assertTrue(len(idioms) >= 15)
+        self.assertTrue(len(idioms) >= 30)
         raj_phrases = [i["rajasthani"] for i in idioms]
         self.assertTrue(any("पगड़ी" in p for p in raj_phrases))
         self.assertTrue(any("खांडे री धार" in p for p in raj_phrases))
         self.assertTrue(any("केसरिया बाना" in p for p in raj_phrases))
         self.assertTrue(any("हाथ पीळा" in p for p in raj_phrases))
+        self.assertTrue(any("गाल बजावणो" in p for p in raj_phrases))
+        self.assertTrue(any("छाती माथे मूंग" in p for p in raj_phrases))
 
     def test_extended_kinship(self):
         sadhoo = rajasthani.resolve_kinship("साढू")
@@ -80,10 +82,12 @@ class TestUltimateFeatures(unittest.TestCase):
         self.assertTrue(os.path.exists(cat_file))
         with open(cat_file, "r", encoding="utf-8") as f:
             cat = json.load(f)
-        self.assertTrue(len(cat) >= 15)
+        self.assertTrue(len(cat) >= 20)
         titles = [c.get("title", "") for c in cat]
         self.assertTrue(any("Veer Satsai" in t for t in titles))
         self.assertTrue(any("Vat" in t for t in titles))
+        self.assertTrue(any("Dhola Maru" in t for t in titles))
+        self.assertTrue(any("Veli Krisan" in t for t in titles))
 
     def test_split_ergative_sentence_generation(self):
         engine = rajasthani.SyntaxEngine(dialect=rajasthani.Dialect.MARWARI)
@@ -106,6 +110,66 @@ class TestUltimateFeatures(unittest.TestCase):
             obj_gender=rajasthani.Gender.MASCULINE,
         )
         self.assertIn("सीता नै आंबा खायो।", s2)
+
+    def test_mega_lexicon_count(self):
+        d = rajasthani.get_default_dictionary()
+        all_words = d.get_all_words()
+        self.assertGreaterEqual(len(all_words), 1000)
+
+    def test_causative_generation(self):
+        c1 = rajasthani.generate_causative("करणो", level=1)
+        self.assertEqual(c1, "करावणो")
+        c2 = rajasthani.generate_causative("करणो", level=2)
+        self.assertEqual(c2, "करवावणो")
+
+        c3 = rajasthani.generate_causative("लिखणो", level=1)
+        self.assertEqual(c3, "लिखावणो")
+        c4 = rajasthani.generate_causative("खावणो", level=1)
+        self.assertEqual(c4, "जिमावणो")
+
+    def test_imperative_registers(self):
+        imp1 = rajasthani.build_imperative("लिखणो", politeness_level="intimate")
+        self.assertEqual(imp1, "तूं लिख")
+
+        imp2 = rajasthani.build_imperative("लिखणो", politeness_level="intimate", negative=True)
+        self.assertEqual(imp2, "तूं मती लिख")
+
+        imp3 = rajasthani.build_imperative("लिखणो", politeness_level="polite")
+        self.assertEqual(imp3, "थे लिखो")
+
+        imp4 = rajasthani.build_imperative("बैठणो", politeness_level="honorific")
+        self.assertEqual(imp4, "आप विराजो सा")
+
+    def test_clusivity_conversion(self):
+        incl = rajasthani.convert_clusivity("हम चालेंगे", inclusive=True)
+        self.assertIn("आपां", incl)
+
+        excl = rajasthani.convert_clusivity("आपां चालेंगे", inclusive=False)
+        self.assertIn("म्हे", excl)
+
+    def test_voice_transformation(self):
+        v1 = rajasthani.transform_voice("राम पोथी बांचै है")
+        self.assertIn("बंचीजै", v1)
+
+    def test_wave6_texts_and_corpus_catalog(self):
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        cat_file = os.path.join(base_dir, "data_sources", "corpus_catalog.json")
+        with open(cat_file, "r", encoding="utf-8") as f:
+            cat = json.load(f)
+        self.assertGreaterEqual(len(cat), 28)
+
+        # Check total size of digitized raw texts
+        raw_dir = os.path.join(base_dir, "data_sources", "raw_texts")
+        files = os.listdir(raw_dir)
+        total_bytes = sum(os.path.getsize(os.path.join(raw_dir, f)) for f in files)
+        self.assertGreaterEqual(total_bytes, 40 * 1024 * 1024)
+
+    def test_proverbs_and_idioms_scale(self):
+        proverbs = rajasthani.get_proverbs()
+        self.assertGreaterEqual(len(proverbs), 35)
+
+        idioms = rajasthani.get_idioms()
+        self.assertGreaterEqual(len(idioms), 40)
 
 
 if __name__ == "__main__":

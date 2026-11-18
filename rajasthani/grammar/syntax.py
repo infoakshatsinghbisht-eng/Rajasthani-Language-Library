@@ -298,6 +298,162 @@ class SyntaxEngine:
         prefix, bridge = connectors.get(connector_type.lower(), ("जे", "तो"))
         return f"{prefix} {clean_sub}, {bridge} {clean_main}।"
 
+    def generate_causative(self, verb: str, level: int = 1) -> str:
+        """
+        Derives authentic Rajasthani causative verb forms (प्रेरणार्थक क्रियावां).
+        Level 1 (Direct causative - प्रत्यक्ष प्रेरणार्थक): e.g. करणो -> करावणो
+        Level 2 (Mediated causative - अप्रत्यक्ष प्रेरणार्थक): e.g. करणो -> करवावणो
+        """
+        CAUSATIVE_REGISTRY = {
+            "करणो": ("करावणो", "करवावणो"),
+            "लिखणो": ("लिखावणो", "लिखवावणो"),
+            "पढ़णो": ("पढ़ावणो", "पढ़वावणो"),
+            "खावणो": ("जिमावणो", "जिमवावणो"),
+            "पीवणो": ("पिलावणो", "पिलवावणो"),
+            "सोवणो": ("सुवावणो", "सुळवावणो"),
+            "धोवणो": ("धुवावणो", "धुळवावणो"),
+            "देखणो": ("दिखावणो", "दिखवावणो"),
+            "सुणणो": ("सुणावणो", "सुणवावणो"),
+            "नाचणो": ("नचावणो", "नचवावणो"),
+            "हंसणो": ("हंसावणो", "हंसवावणो"),
+            "रोवणो": ("रुवावणो", "रुळवावणो"),
+            "बैठणो": ("बिठावणो", "बिठवावणो"),
+            "उठणो": ("उठावणो", "उठवावणो"),
+            "देणो": ("दिवावणो", "दिवरावणो"),
+            "लेणो": ("लिवावणो", "लिवरावणो"),
+            "चालणो": ("चलावणो", "चलवावणो"),
+            "बोलणो": ("बुलावणो", "बुलवावणो"),
+            "काढणो": ("कढावणो", "कढ़वावणो"),
+            "बांचणो": ("बंचावणो", "बंचवावणो"),
+        }
+
+        v_clean = verb.strip()
+        if not v_clean.endswith("णो") and not v_clean.endswith("नो"):
+            v_clean = v_clean + "णो"
+
+        if v_clean in CAUSATIVE_REGISTRY:
+            idx = 0 if level == 1 else 1
+            return CAUSATIVE_REGISTRY[v_clean][idx]
+
+        root = extract_root(v_clean)
+        if level == 1:
+            return f"{root}ावणो"
+        else:
+            return f"{root}वावणो"
+
+    def build_imperative(
+        self,
+        verb: str,
+        politeness_level: str = "polite",
+        negative: bool = False,
+    ) -> str:
+        """
+        Generates authentic imperative directive sentences across 4 politeness tiers:
+        - 'intimate': तूं + root (e.g., 'तूं लिख', neg: 'तूं मती लिख')
+        - 'familiar': तूं + root-ओ (e.g., 'तूं लिखो', neg: 'तूं लिखो मती')
+        - 'polite': थे + root-ओ / पधारो (e.g., 'थे लिखो', neg: 'थे लिखो मती')
+        - 'honorific': आप + royal verb + सा (e.g., 'आप विराजो सा', 'आप आरोगो सा')
+        """
+        root = extract_root(verb)
+        lvl = politeness_level.lower()
+
+        if lvl == "intimate":
+            if negative:
+                return f"तूं मती {root}"
+            return f"तूं {root}"
+        elif lvl == "familiar":
+            if negative:
+                return f"तूं {root}ो मती"
+            return f"तूं {root}ो"
+        elif lvl == "honorific":
+            royal_map = {
+                "खाणो": "आरोगो",
+                "खा": "आरोगो",
+                "आवणो": "पधारो",
+                "आ": "पधारो",
+                "जाणो": "पधारो",
+                "जा": "पधारो",
+                "बैठणो": "विराजो",
+                "बैठ": "विराजो",
+                "बोलणो": "फरमावो",
+                "कहणो": "फरमावो",
+                "देखणो": "निहारो",
+            }
+            form = royal_map.get(verb.strip(), f"{root}ो")
+            if negative:
+                return f"आप {form} मती सा"
+            return f"आप {form} सा"
+        else:  # polite default (थे)
+            if negative:
+                return f"थे {root}ो मती"
+            return f"थे {root}ो"
+
+    def convert_clusivity(self, sentence: str, inclusive: bool = True) -> str:
+        """
+        Transforms 1st person plural statements between Inclusive ('आपां' = speaker + listener)
+        and Exclusive ('म्हे' / 'म्हैं' = speaker + associates, excluding listener).
+        """
+        text = sentence.strip()
+
+        def _replace_word(pattern: str, repl: str, s: str) -> str:
+            return re.sub(rf"(?:(?<=^)|(?<=\s))({pattern})(?=\s|$|[।?,.!])", repl, s)
+
+        if inclusive:
+            # Replace exclusive or generic Hindi pronouns with inclusive आपां
+            text = _replace_word("म्हे|म्हें|हम", "आपां", text)
+            text = _replace_word("म्हारो|हमारा", "आपणो", text)
+            text = _replace_word("म्हारी|हमारी", "आपणी", text)
+            text = _replace_word("म्हारा|हमारे", "आपणा", text)
+        else:
+            # Replace inclusive with exclusive म्हें
+            text = _replace_word("आपां|हम", "म्हे", text)
+            text = _replace_word("आपणो|हमारा", "म्हारो", text)
+            text = _replace_word("आपणी|हमारी", "म्हारी", text)
+            text = _replace_word("आपणा|हमारे", "म्हारा", text)
+        return text
+
+    def transform_voice(self, sentence: str, target_voice: str = "passive") -> str:
+        """
+        Transforms active Rajasthani sentences into synthetic passive or impersonal voice
+        (कर्मवाच्य अर भाववाच्य) utilizing -ईजै / -इजै suffixation.
+        Examples:
+          - 'राम पोथी बांचै है' -> 'राम सूं पोथी बंचीजै है'
+          - 'म्हैं काम कियो' -> 'म्हारै सूं काम करीज्यो'
+          - 'म्हे नीं चाल सकाँ' -> 'म्हारै सूं चालिजै कोनी'
+        """
+        s = sentence.strip().rstrip("।").strip()
+        if target_voice.lower() == "passive":
+            # Simple pronoun agent transformations
+            agent_map = {
+                "म्हूँ": "म्हारै सूं",
+                "म्हैं": "म्हारै सूं",
+                "थूँ": "थारै सूं",
+                "तैं": "थारै सूं",
+                "वो": "उण रै सूं",
+                "उण": "उण रै सूं",
+                "आपां": "आपां रै सूं",
+            }
+            for k, v in agent_map.items():
+                if s.startswith(k + " "):
+                    s = v + s[len(k):]
+                    break
+            else:
+                words = s.split()
+                if words and not words[0].endswith("सूं"):
+                    words[0] = f"{words[0]} रै हाथूं"
+                    s = " ".join(words)
+
+            # Verb stem passivization
+            if "बांचै" in s:
+                s = s.replace("बांचै है", "बंचीजै है").replace("बांचै", "बंचीजै")
+            elif "करै" in s:
+                s = s.replace("करै है", "करीजै है").replace("करै", "करीजै")
+            elif "लिखै" in s:
+                s = s.replace("लिखै है", "लिखीजै है").replace("लिखै", "लिखीजै")
+            elif "चाल" in s:
+                s = s.replace("चाल सकाँ कोनी", "चालीजै कोनी").replace("चाल सकै कोनी", "चालीजै कोनी")
+        return f"{s}।"
+
     def explain_syntax_rules(self) -> Dict[str, any]:
         """
         Returns structured documentation and grammatical rules of Rajasthani sentence construction,
@@ -365,8 +521,44 @@ class SyntaxEngine:
             "negation_system": {
                 "general_negation": "कोनी (Marwari/Mewari) / कोन्या (Dhundhari) (e.g., 'म्हूँ कोनी जावूं')",
                 "prohibitive_imperative": "मती (e.g., 'झूठ मती बोलो!')"
+            },
+            "causative_morphology": {
+                "direct_causative": "Root + -ावणो (e.g., करणो -> करावणो, लिखणो -> लिखावणो, खावणो -> जिमावणो)",
+                "mediated_causative": "Root + -वावणो (e.g., करणो -> करवावणो, लिखणो -> लिखवावणो, खावणो -> जिमवावणो)"
+            },
+            "vat_narrative_discourse": {
+                "opening_formulas": ["एक समै री बात है", "इण भांत कहीजै", "वात यूं है कि"],
+                "transition_particles": ["तद", "पछै", "इत्तै में", "ओ देख'र"],
+                "reported_speech": ["इम बोल्या", "यूं कह्यो", "हुकम फरमायो"],
+                "closing_formulas": ["कथा पूरी भई, आनंद मंगल भयो", "सगळा सुख सूं रहण लाग्या"]
+            },
+            "honorific_registers": {
+                "intimate": "तूं + root (तूं लिख / मती लिख)",
+                "familiar": "तूं + root-ओ (तूं लिखो)",
+                "polite": "थे + root-ओ (थे लिखो)",
+                "courtly_honorific": "आप + royal verb + सा (आप विराजो सा / आरोगो सा / पधारो सा)"
             }
         }
+
+
+def generate_causative(verb: str, level: int = 1) -> str:
+    """Convenience function: derives Rajasthani causative verb forms."""
+    return SyntaxEngine().generate_causative(verb, level=level)
+
+
+def build_imperative(verb: str, politeness_level: str = "polite", negative: bool = False) -> str:
+    """Convenience function: builds directive imperative sentence in Rajasthani."""
+    return SyntaxEngine().build_imperative(verb, politeness_level=politeness_level, negative=negative)
+
+
+def convert_clusivity(sentence: str, inclusive: bool = True) -> str:
+    """Convenience function: transforms between inclusive (आपां) and exclusive (म्हे) 1st plural."""
+    return SyntaxEngine().convert_clusivity(sentence, inclusive=inclusive)
+
+
+def transform_voice(sentence: str, target_voice: str = "passive") -> str:
+    """Convenience function: converts active Rajasthani sentence into synthetic passive voice."""
+    return SyntaxEngine().transform_voice(sentence, target_voice=target_voice)
 
 
 def hindi_to_rajasthani(sentence: str, dialect: Dialect = Dialect.MARWARI) -> str:

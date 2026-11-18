@@ -130,6 +130,10 @@ from rajasthani.grammar import (
     explain_syntax_rules,
     build_compound_verb,
     build_complex_sentence,
+    generate_causative,
+    build_imperative,
+    convert_clusivity,
+    transform_voice,
 )
 
 # Lexicon & Dictionary
@@ -317,6 +321,10 @@ __all__ = [
     "explain_syntax_rules",
     "build_compound_verb",
     "build_complex_sentence",
+    "generate_causative",
+    "build_imperative",
+    "convert_clusivity",
+    "transform_voice",
     # Lexicon
     "Word",
     "Dictionary",
