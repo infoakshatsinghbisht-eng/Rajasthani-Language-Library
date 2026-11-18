@@ -195,5 +195,26 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(e);
     }
   }
-  loadCorpus();
+  // 7. Idioms Loader
+  const idiomsGrid = document.getElementById("idioms-grid");
+  async function loadIdioms() {
+    if (!idiomsGrid) return;
+    try {
+      const res = await fetch("/api/idioms");
+      const data = await res.json();
+      idiomsGrid.innerHTML = data.idioms.map(i => `
+        <div class="culture-card">
+          <h3>${i.rajasthani}</h3>
+          <p class="res-roman"><em>${i.roman}</em></p>
+          <p><strong>अर्थ:</strong> ${i.hindi}</p>
+          <p><strong>English:</strong> ${i.english}</p>
+          <p class="text-muted"><small>संदर्भ: ${i.cultural_context}</small></p>
+          ${i.example ? `<p class="dict-ex mt-2">उदा.: "${i.example}"</p>` : ""}
+        </div>
+      `).join("");
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  loadIdioms();
 });

@@ -130,5 +130,49 @@
     "year": 1986,
     "category": "Language, Cultural Traditions & Literary Critique",
     "size_kb": 564.4
+  },
+  {
+    "id": "RAJ-BOK-016",
+    "archive_id": "in.ernet.dli.2015.380463",
+    "title": "Veer Satsai",
+    "author": "Mahakavi Suryamal Misran",
+    "year": 1857,
+    "category": "Classical Heroic Dingal Poetry",
+    "local_name": "in.ernet.dli.2015.380463_2015.380463.Veer-Satsai_djvu.txt",
+    "file_name": "2015.380463.Veer-Satsai_djvu.txt",
+    "size_kb": 983.8
+  },
+  {
+    "id": "RAJ-BOK-017",
+    "archive_id": "in.ernet.dli.2015.308096",
+    "title": "Rajasthani Vat Sahitya",
+    "author": "Dr. Poonam Daiya",
+    "year": 1965,
+    "category": "Historical Vats & Folk Chronicles",
+    "local_name": "in.ernet.dli.2015.308096_2015.308096.Rajasthani-Vat_djvu.txt",
+    "file_name": "2015.308096.Rajasthani-Vat_djvu.txt",
+    "size_kb": 757.7
+  },
+  {
+    "id": "RAJ-BOK-018",
+    "archive_id": "in.ernet.dli.2015.444365",
+    "title": "Rajasthani Kahani Sangrah [Jaagati Jot]",
+    "author": "Ramesh Dayal",
+    "year": 1974,
+    "category": "Modern Rajasthani Short Stories",
+    "local_name": "in.ernet.dli.2015.444365_2015.444365.Rajasthani-Kahani_djvu.txt",
+    "file_name": "2015.444365.Rajasthani-Kahani_djvu.txt",
+    "size_kb": 354.4
+  },
+  {
+    "id": "RAJ-BOK-019",
+    "archive_id": "in.ernet.dli.2015.444198",
+    "title": "Rajasthani Nibandh",
+    "author": "Manohar Sharma",
+    "year": 1970,
+    "category": "Essays & Literary Criticism",
+    "local_name": "in.ernet.dli.2015.444198_2015.444198.Rajasthani-Nibandh_djvu.txt",
+    "file_name": "2015.444198.Rajasthani-Nibandh_djvu.txt",
+    "size_kb": 385.6
   }
 ]

@@ -7,6 +7,9 @@ from rajasthani.lexicon.dictionary import (
     get_default_dictionary,
     lookup,
     search,
+    get_idioms,
+    get_proverbs,
+    get_riddles,
 )
 from rajasthani.lexicon.morphology import (
     generate_noun_paradigm,
@@ -20,6 +23,9 @@ __all__ = [
     "get_default_dictionary",
     "lookup",
     "search",
+    "get_idioms",
+    "get_proverbs",
+    "get_riddles",
     "generate_noun_paradigm",
     "generate_verb_paradigm",
     "stem_word",

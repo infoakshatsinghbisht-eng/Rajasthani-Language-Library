@@ -132,9 +132,12 @@ def conjugate(
             else:
                 return forms["m_sg"] if number == GrammaticalNumber.SINGULAR else forms["m_pl"]
         else:
-            # Regular past formation: root + -यो / -ई / -या
+            # Regular past formation: root + -यो / -ी / -या
             if gender == Gender.FEMININE:
-                return f"{root}ई"
+                if root and (root[-1] in "ािीुूेैोौ" or "\u0904" <= root[-1] <= "\u0914"):
+                    return f"{root}ई"
+                else:
+                    return f"{root}ी"
             else:
                 return f"{root}यो" if number == GrammaticalNumber.SINGULAR else f"{root}या"
 

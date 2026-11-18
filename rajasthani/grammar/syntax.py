@@ -210,6 +210,94 @@ class SyntaxEngine:
 
         return text
 
+    def build_compound_verb(
+        self,
+        main_verb: str,
+        vector_verb: str = "लेणो",
+        tense: Tense = Tense.PAST,
+        gender: Gender = Gender.MASCULINE,
+        number: GrammaticalNumber = GrammaticalNumber.SINGULAR,
+        dialect: Dialect = Dialect.MARWARI,
+    ) -> str:
+        """
+        Constructs an authentic Rajasthani compound verb (संयुक्त क्रिया) with vector auxiliary.
+        Examples:
+          - खाणो + लेणो -> खाय लियो (completed action for self)
+          - देवणो + देणो -> दे दीनो (completed action for another)
+          - चालणो + पड़णो -> चाल पड़्यो (sudden inception)
+          - बोलणो + उठणो -> बोल उठ्यो (spontaneous utterance)
+          - करणो + नांखणो -> कर नांख्यो (decisive disposal)
+        """
+        root = extract_root(main_verb)
+        # Conjunctive participle of main verb
+        if root.endswith(("ा", "ो", "ी", "ू")):
+            participle = root + "य"
+        else:
+            participle = root
+
+        # Special stem adjustments
+        if main_verb in ["खाणो", "खा"]:
+            participle = "खाय"
+        elif main_verb in ["पीवणो", "पी"]:
+            participle = "पीय"
+        elif main_verb in ["देवणो", "दे"]:
+            participle = "दे"
+        elif main_verb in ["लेवणो", "ले"]:
+            participle = "ले"
+        elif main_verb in ["करणो", "कर"]:
+            participle = "कर"
+
+        # Conjugate vector verb
+        vector_conjugated = conjugate(
+            vector_verb,
+            tense=tense,
+            person=Person.THIRD,
+            gender=gender,
+            number=number,
+            dialect=dialect,
+        )
+
+        # Irregular past vector forms in Rajasthani literature
+        if tense == Tense.PAST:
+            if vector_verb in ["देणो", "देवणो"]:
+                vector_conjugated = "दीनो" if gender == Gender.MASCULINE and number == GrammaticalNumber.SINGULAR else ("दीनी" if gender == Gender.FEMININE else "दीना")
+            elif vector_verb in ["लेणो", "लेवणो"]:
+                vector_conjugated = "लियो" if gender == Gender.MASCULINE and number == GrammaticalNumber.SINGULAR else ("लीनी" if gender == Gender.FEMININE else "लिया")
+
+        return f"{participle} {vector_conjugated}"
+
+    def build_complex_sentence(
+        self,
+        sub_clause: str,
+        main_clause: str,
+        connector_type: str = "conditional",
+    ) -> str:
+        """
+        Builds complex Rajasthani sentences with correlative clause connectors
+        characteristic of classical folk vats and modern literary stories.
+        Supported connector_types:
+          - 'conditional': जे... तो (If... then)
+          - 'temporal': जद... तद (When... then)
+          - 'relative': जको... वो (The one who... that one)
+          - 'spatial': जठै... वठै (Where... there)
+          - 'manner': जियां... तियां (As... so)
+          - 'concessive': भले ही... पण (Even if... yet)
+        """
+        clean_sub = sub_clause.strip().rstrip("।").rstrip(",")
+        clean_main = main_clause.strip().rstrip("।")
+
+        connectors = {
+            "conditional": ("जे", "तो"),
+            "temporal": ("जद", "तद"),
+            "relative": ("जको", "वो"),
+            "spatial": ("जठै", "वठै"),
+            "manner": ("जियां", "तियां"),
+            "concessive": ("भले ही", "पण"),
+        }
+
+        prefix, bridge = connectors.get(connector_type.lower(), ("जे", "तो"))
+        return f"{prefix} {clean_sub}, {bridge} {clean_main}।"
+
     def explain_syntax_rules(self) -> Dict[str, any]:
         """
         Returns structured documentation and grammatical rules of Rajasthani sentence construction,
@@ -284,6 +372,29 @@ class SyntaxEngine:
 def hindi_to_rajasthani(sentence: str, dialect: Dialect = Dialect.MARWARI) -> str:
     """Convenience function: converts Hindi sentence into Rajasthani."""
     return SyntaxEngine(dialect=dialect).hindi_to_rajasthani(sentence, dialect=dialect)
+
+
+def build_compound_verb(
+    main_verb: str,
+    vector_verb: str = "लेणो",
+    tense: Tense = Tense.PAST,
+    gender: Gender = Gender.MASCULINE,
+    number: GrammaticalNumber = GrammaticalNumber.SINGULAR,
+    dialect: Dialect = Dialect.MARWARI,
+) -> str:
+    """Convenience function: constructs a Rajasthani compound verb."""
+    return SyntaxEngine(dialect=dialect).build_compound_verb(
+        main_verb, vector_verb, tense=tense, gender=gender, number=number, dialect=dialect
+    )
+
+
+def build_complex_sentence(
+    sub_clause: str,
+    main_clause: str,
+    connector_type: str = "conditional",
+) -> str:
+    """Convenience function: constructs a Rajasthani correlative complex sentence."""
+    return SyntaxEngine().build_complex_sentence(sub_clause, main_clause, connector_type=connector_type)
 
 
 def explain_syntax_rules() -> Dict[str, any]:

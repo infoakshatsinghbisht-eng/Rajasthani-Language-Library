@@ -128,6 +128,8 @@ from rajasthani.grammar import (
     SyntaxEngine,
     hindi_to_rajasthani,
     explain_syntax_rules,
+    build_compound_verb,
+    build_complex_sentence,
 )
 
 # Lexicon & Dictionary
@@ -137,6 +139,9 @@ from rajasthani.lexicon import (
     get_default_dictionary,
     lookup,
     search,
+    get_idioms,
+    get_proverbs,
+    get_riddles,
     generate_noun_paradigm,
     generate_verb_paradigm,
     stem_word,
@@ -310,12 +315,17 @@ __all__ = [
     "SyntaxEngine",
     "hindi_to_rajasthani",
     "explain_syntax_rules",
+    "build_compound_verb",
+    "build_complex_sentence",
     # Lexicon
     "Word",
     "Dictionary",
     "get_default_dictionary",
     "lookup",
     "search",
+    "get_idioms",
+    "get_proverbs",
+    "get_riddles",
     "generate_noun_paradigm",
     "generate_verb_paradigm",
     "stem_word",

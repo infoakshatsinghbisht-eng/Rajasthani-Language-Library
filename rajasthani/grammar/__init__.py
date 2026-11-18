@@ -35,7 +35,13 @@ from rajasthani.grammar.presumptive import presumptive_clause
 from rajasthani.grammar.inceptive import inceptive_clause
 from rajasthani.grammar.deliberative import deliberative_question, hortative_proposal
 from rajasthani.grammar.voice import passive_form, medio_passive_inability
-from rajasthani.grammar.syntax import SyntaxEngine, hindi_to_rajasthani, explain_syntax_rules
+from rajasthani.grammar.syntax import (
+    SyntaxEngine,
+    hindi_to_rajasthani,
+    explain_syntax_rules,
+    build_compound_verb,
+    build_complex_sentence,
+)
 
 __all__ = [
     "pluralize",
@@ -79,4 +85,6 @@ __all__ = [
     "SyntaxEngine",
     "hindi_to_rajasthani",
     "explain_syntax_rules",
+    "build_compound_verb",
+    "build_complex_sentence",
 ]

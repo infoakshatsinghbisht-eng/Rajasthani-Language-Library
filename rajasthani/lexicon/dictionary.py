@@ -47,11 +47,12 @@ class Dictionary:
         self.phrases: List[Dict[str, str]] = []
         self.proverbs: List[Dict[str, str]] = []
         self.riddles: List[Dict[str, str]] = []
+        self.idioms: List[Dict[str, str]] = []
 
         self._load_data()
 
     def _load_data(self):
-        """Loads words, phrases, proverbs, and riddles from JSON datasets."""
+        """Loads words, phrases, proverbs, riddles, and idioms from JSON datasets."""
         # 1. Words
         words_path = os.path.join(self.data_dir, "words.json")
         if os.path.exists(words_path):
@@ -101,6 +102,12 @@ class Dictionary:
         if os.path.exists(riddles_path):
             with open(riddles_path, "r", encoding="utf-8") as f:
                 self.riddles = json.load(f)
+
+        # 5. Idioms
+        idioms_path = os.path.join(self.data_dir, "idioms.json")
+        if os.path.exists(idioms_path):
+            with open(idioms_path, "r", encoding="utf-8") as f:
+                self.idioms = json.load(f)
 
     def lookup(self, word: str, exact: bool = False) -> Optional[Word]:
         """
@@ -180,6 +187,10 @@ class Dictionary:
         """Returns traditional Rajasthani riddles (पहेलियाँ)."""
         return list(self.riddles)
 
+    def get_idioms(self) -> List[Dict[str, str]]:
+        """Returns traditional Rajasthani idioms (मुहावरे)."""
+        return list(self.idioms)
+
     def random_word(self) -> Optional[Word]:
         """Returns a random word from the lexicon."""
         return random.choice(self.words) if self.words else None
@@ -191,6 +202,10 @@ class Dictionary:
     def random_riddle(self) -> Optional[Dict[str, str]]:
         """Returns a random Rajasthani riddle."""
         return random.choice(self.riddles) if self.riddles else None
+
+    def random_idiom(self) -> Optional[Dict[str, str]]:
+        """Returns a random Rajasthani idiom."""
+        return random.choice(self.idioms) if self.idioms else None
 
 
 # Module-level default singleton
@@ -213,3 +228,18 @@ def lookup(word: str) -> Optional[Word]:
 def search(query: str, limit: int = 20) -> List[Word]:
     """Convenience function: search words in the default dictionary."""
     return get_default_dictionary().search(query, limit)
+
+
+def get_idioms() -> List[Dict[str, str]]:
+    """Convenience function: returns all Rajasthani idioms."""
+    return get_default_dictionary().get_idioms()
+
+
+def get_proverbs() -> List[Dict[str, str]]:
+    """Convenience function: returns all Rajasthani proverbs."""
+    return get_default_dictionary().get_proverbs()
+
+
+def get_riddles() -> List[Dict[str, str]]:
+    """Convenience function: returns all Rajasthani riddles."""
+    return get_default_dictionary().get_riddles()

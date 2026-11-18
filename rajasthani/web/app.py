@@ -142,6 +142,27 @@ class RajasthaniRequestHandler(SimpleHTTPRequestHandler):
             self._send_json(rules)
             return
 
+        elif path == "/api/idioms":
+            idioms = rajasthani.get_idioms()
+            self._send_json({"idioms": idioms, "count": len(idioms)})
+            return
+
+        elif path == "/api/folklore":
+            proverbs = rajasthani.get_proverbs()
+            riddles = rajasthani.get_riddles()
+            idioms = rajasthani.get_idioms()
+            self._send_json({
+                "proverbs": proverbs,
+                "riddles": riddles,
+                "idioms": idioms,
+                "counts": {
+                    "proverbs": len(proverbs),
+                    "riddles": len(riddles),
+                    "idioms": len(idioms)
+                }
+            })
+            return
+
         elif path == "/api/corpus":
             catalog_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data_sources", "corpus_catalog.json")
             if os.path.exists(catalog_path):
