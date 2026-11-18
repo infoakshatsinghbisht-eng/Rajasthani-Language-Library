@@ -307,5 +307,83 @@
     "id": "RAJ-BOK-028",
     "local_name": "in.ernet.dli.2015.444415_marwari_vyapari.txt",
     "category": "Socio-economic History & Trade Terminology"
+  },
+  {
+    "id": "RAJ-BOK-029",
+    "filename": "in.ernet.dli.2015.400763_rajasthani_kahawat_kosh.txt",
+    "local_name": "in.ernet.dli.2015.400763_rajasthani_kahawat_kosh.txt",
+    "title": "Rajasthani Kahawat Kosh",
+    "author": "Bhagirath Kanoria",
+    "year": "1965",
+    "genre": "Proverbs, Paremiology & Folk Wisdom",
+    "category": "Proverbs, Paremiology & Folk Wisdom",
+    "language": "Rajasthani / Marwari / Hindi",
+    "source": "Internet Archive (in.ernet.dli.2015.400763)",
+    "size_bytes": 1826488
+  },
+  {
+    "id": "RAJ-BOK-030",
+    "filename": "padam_bhagat_rukamani_mangal_harji_ro_vyambalo_1977.txt",
+    "local_name": "padam_bhagat_rukamani_mangal_harji_ro_vyambalo_1977.txt",
+    "title": "Rukamani Mangal & Harji Ro Vyambalo",
+    "author": "Padam Bhagat / Satyanarayan Swami",
+    "year": "1977",
+    "genre": "Devotional Folk Ballad & Wedding Songs",
+    "category": "Devotional Folk Ballad & Wedding Songs",
+    "language": "Rajasthani / Marwari",
+    "source": "Internet Archive (lzcw_rukamani-mangal-harji-ro-vyambalo-by-padam-bhagat-translated-by-satyanaraya)",
+    "size_bytes": 1004375
+  },
+  {
+    "id": "RAJ-BOK-031",
+    "filename": "tessitori_vithu_sujo_chanda_rau_jeta_si_ro_1920.txt",
+    "local_name": "tessitori_vithu_sujo_chanda_rau_jeta_si_ro_1920.txt",
+    "title": "Chhanda Rau Jeta Si Ro (Vithu Sujo)",
+    "author": "Vithu Sujo / Dr. Luigi Pio Tessitori",
+    "year": "1920",
+    "genre": "Heroic Dingal Chronicle & Bardic History",
+    "category": "Heroic Dingal Chronicle & Bardic History",
+    "language": "Dingal / Rajasthani",
+    "source": "Internet Archive (dwht-bardic-and-historical-survey-of-rajputana-chanda-r)",
+    "size_bytes": 231999
+  },
+  {
+    "id": "RAJ-BOK-032",
+    "filename": "in.ernet.dli.2015.306886_parampra_dingal_kosh.txt",
+    "local_name": "in.ernet.dli.2015.306886_parampra_dingal_kosh.txt",
+    "title": "Parampra Dingal Kosh",
+    "author": "Dr. Narayansingh Bhati",
+    "year": "1968",
+    "genre": "Lexicography & Dingal Vocabulary",
+    "category": "Lexicography & Dingal Vocabulary",
+    "language": "Dingal / Rajasthani",
+    "source": "Internet Archive (in.ernet.dli.2015.306886)",
+    "size_bytes": 848230
+  },
+  {
+    "id": "RAJ-BOK-033",
+    "filename": "narsi_mehta_ka_bada_mamera_marwari.txt",
+    "local_name": "narsi_mehta_ka_bada_mamera_marwari.txt",
+    "title": "Narsi Mehta Ka Bada Mamera (Mayro)",
+    "author": "Ram Ratan Darak Maheshwari",
+    "year": "1952",
+    "genre": "Folk Ballad & Mayra Traditions",
+    "category": "Folk Ballad & Mayra Traditions",
+    "language": "Marwari / Rajasthani",
+    "source": "Internet Archive (narsi-mehta-ka-bada-mamera-ram-ratan-darak-maheshwari-marwari)",
+    "size_bytes": 293710
+  },
+  {
+    "id": "RAJ-BOK-034",
+    "filename": "tessitori_veli_krisana_rukamani_ri_asiatic_1919.txt",
+    "local_name": "tessitori_veli_krisana_rukamani_ri_asiatic_1919.txt",
+    "title": "Veli Krisana Rukamani Ri (Asiatic Society Edition)",
+    "author": "Rathore Raja Prithviraj / Dr. L.P. Tessitori",
+    "year": "1919",
+    "genre": "Classical Dingal Poetry (Tessitori Critical Edition)",
+    "category": "Classical Dingal Poetry (Tessitori Critical Edition)",
+    "language": "Dingal / Rajasthani",
+    "source": "Internet Archive (tbqa-veli-krisana-rukamani-ri-part-1-dingala-text-by-ra)",
+    "size_bytes": 390411
   }
 ]

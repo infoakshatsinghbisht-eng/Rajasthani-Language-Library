@@ -114,7 +114,7 @@ class TestUltimateFeatures(unittest.TestCase):
     def test_mega_lexicon_count(self):
         d = rajasthani.get_default_dictionary()
         all_words = d.get_all_words()
-        self.assertGreaterEqual(len(all_words), 1000)
+        self.assertGreaterEqual(len(all_words), 1200)
 
     def test_causative_generation(self):
         c1 = rajasthani.generate_causative("करणो", level=1)
@@ -151,18 +151,36 @@ class TestUltimateFeatures(unittest.TestCase):
         v1 = rajasthani.transform_voice("राम पोथी बांचै है")
         self.assertIn("बंचीजै", v1)
 
-    def test_wave6_texts_and_corpus_catalog(self):
+    def test_wave7_texts_and_corpus_catalog(self):
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         cat_file = os.path.join(base_dir, "data_sources", "corpus_catalog.json")
         with open(cat_file, "r", encoding="utf-8") as f:
             cat = json.load(f)
-        self.assertGreaterEqual(len(cat), 28)
+        self.assertGreaterEqual(len(cat), 34)
 
         # Check total size of digitized raw texts
         raw_dir = os.path.join(base_dir, "data_sources", "raw_texts")
         files = os.listdir(raw_dir)
         total_bytes = sum(os.path.getsize(os.path.join(raw_dir, f)) for f in files)
-        self.assertGreaterEqual(total_bytes, 40 * 1024 * 1024)
+        self.assertGreaterEqual(total_bytes, 45 * 1024 * 1024)
+
+    def test_counterfactual_conditional(self):
+        cf = rajasthani.build_counterfactual_conditional("मेह बरसतो", "अकाल नीं पड़तो")
+        self.assertEqual(cf, "जे मेह बरसतो, तो अकाल नीं पड़तो।")
+
+    def test_optative_benedictions(self):
+        bless = rajasthani.build_optative("भगवान", "थारो भलो करै")
+        self.assertEqual(bless, "भगवान थारो भलो करै!")
+
+    def test_vat_narrative_generation(self):
+        vat = rajasthani.build_vat_narrative(
+            protagonist="राव जेतासी",
+            setting="बीकानेर दुर्ग",
+            deed="शत्रु दल नै परास्त कियो",
+        )
+        self.assertIn("एक समै री बात है।", vat)
+        self.assertIn("राव जेतासी", vat)
+        self.assertIn("आनंद मंगल भयो।", vat)
 
     def test_proverbs_and_idioms_scale(self):
         proverbs = rajasthani.get_proverbs()

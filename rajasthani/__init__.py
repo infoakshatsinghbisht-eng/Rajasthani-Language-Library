@@ -134,6 +134,9 @@ from rajasthani.grammar import (
     build_imperative,
     convert_clusivity,
     transform_voice,
+    build_counterfactual_conditional,
+    build_optative,
+    build_vat_narrative,
 )
 
 # Lexicon & Dictionary
@@ -325,6 +328,9 @@ __all__ = [
     "build_imperative",
     "convert_clusivity",
     "transform_voice",
+    "build_counterfactual_conditional",
+    "build_optative",
+    "build_vat_narrative",
     # Lexicon
     "Word",
     "Dictionary",

@@ -45,6 +45,9 @@ from rajasthani.grammar.syntax import (
     build_imperative,
     convert_clusivity,
     transform_voice,
+    build_counterfactual_conditional,
+    build_optative,
+    build_vat_narrative,
 )
 
 __all__ = [
@@ -95,4 +98,7 @@ __all__ = [
     "build_imperative",
     "convert_clusivity",
     "transform_voice",
+    "build_counterfactual_conditional",
+    "build_optative",
+    "build_vat_narrative",
 ]

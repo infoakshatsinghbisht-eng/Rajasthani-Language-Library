@@ -454,6 +454,52 @@ class SyntaxEngine:
                 s = s.replace("चाल सकाँ कोनी", "चालीजै कोनी").replace("चाल सकै कोनी", "चालीजै कोनी")
         return f"{s}।"
 
+    def build_counterfactual_conditional(
+        self,
+        condition_clause: str,
+        consequence_clause: str,
+    ) -> str:
+        """
+        Builds past counterfactual conditional sentences (हेतुहेतुमद्भाव).
+        Formula: जे <condition>तो, तो <consequence>तो।
+        Example: 'जे मेह बरसतो, तो अकाल नीं पड़तो।'
+        """
+        cond = condition_clause.strip().rstrip("।").rstrip(",")
+        cons = consequence_clause.strip().rstrip("।")
+        if not cond.startswith("जे "):
+            cond = f"जे {cond}"
+        return f"{cond}, तो {cons}।"
+
+    def build_optative(
+        self,
+        subject: str,
+        verb_phrase: str = "भलो करै",
+        blessing: bool = True,
+    ) -> str:
+        """
+        Builds traditional Rajasthani benedictive / optative wishes (आशीर्वचन अर शुभकामना).
+        Example: 'भगवान थारो भलो करै!'
+        """
+        subj = subject.strip()
+        vp = verb_phrase.strip().rstrip("।").rstrip("!")
+        mark = "!" if blessing else "।"
+        return f"{subj} {vp}{mark}"
+
+    def build_vat_narrative(
+        self,
+        protagonist: str = "एक शूरवीर रजपूत",
+        setting: str = "मरुधर देस",
+        deed: str = "धर्म री रक्षा खातर सीस कटाय दियो",
+    ) -> str:
+        """
+        Generates classical folk vat narrative prose following authentic medieval discourse rules:
+        Opening formula + setting + protagonist introduction + deed + moral closing.
+        """
+        return (
+            f"एक समै री बात है। {setting} मांय {protagonist} रह्वै थो। "
+            f"तद उण {deed}। कथा पूरी भई, आनंद मंगल भयो।"
+        )
+
     def explain_syntax_rules(self) -> Dict[str, any]:
         """
         Returns structured documentation and grammatical rules of Rajasthani sentence construction,
@@ -592,3 +638,22 @@ def build_complex_sentence(
 def explain_syntax_rules() -> Dict[str, any]:
     """Convenience function: returns dictionary of Rajasthani syntax, agreement and conversion rules."""
     return SyntaxEngine().explain_syntax_rules()
+
+
+def build_counterfactual_conditional(condition_clause: str, consequence_clause: str) -> str:
+    """Convenience function: constructs a Rajasthani past counterfactual conditional sentence."""
+    return SyntaxEngine().build_counterfactual_conditional(condition_clause, consequence_clause)
+
+
+def build_optative(subject: str, verb_phrase: str = "भलो करै", blessing: bool = True) -> str:
+    """Convenience function: constructs a traditional Rajasthani benedictive / optative sentence."""
+    return SyntaxEngine().build_optative(subject, verb_phrase=verb_phrase, blessing=blessing)
+
+
+def build_vat_narrative(
+    protagonist: str = "एक शूरवीर रजपूत",
+    setting: str = "मरुधर देस",
+    deed: str = "धर्म री रक्षा खातर सीस कटाय दियो",
+) -> str:
+    """Convenience function: constructs traditional Rajasthani Vat narrative prose."""
+    return SyntaxEngine().build_vat_narrative(protagonist=protagonist, setting=setting, deed=deed)

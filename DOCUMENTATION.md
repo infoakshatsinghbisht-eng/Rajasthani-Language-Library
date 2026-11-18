@@ -66,7 +66,12 @@ Constructs authentic folk vat and literary correlatives:
 - `concessive`: `भले ही... पण` (*भले ही आंधी आवै, पण कदम नीं रुकसी।*)
 Use `rajasthani.build_complex_sentence(sub_clause, main_clause, connector_type)`.
 
-### Rule 7: Imperative Directives & Politeness Registers
+### Rule 7: Past Counterfactual Conditionals (हेतुहेतुमद्भाव)
+Constructs unfulfilled historical or hypothetical past conditions:
+- `जे मेह बरसतो, तो अकाल नीं पड़तो।` *(If it had rained, there would have been no famine).*
+Use `rajasthani.build_counterfactual_conditional(condition_clause, consequence_clause)`.
+
+### Rule 8: Imperative Directives & Politeness Registers
 Four distinct social honorific tiers:
 - `intimate` (तूं): `तूं लिख` / negative: `तूं मती लिख`
 - `familiar` (तूं/थे): `तूं लिखो`
@@ -74,7 +79,17 @@ Four distinct social honorific tiers:
 - `honorific` (आप / हुकम): `आप विराजो सा` / `आप आरोगो सा` / `आप पधारो सा`
 Use `rajasthani.build_imperative(verb, politeness_level, negative)`.
 
-### Rule 8: Synthetic Passive Voice (`-ईजै` / `-इजै`)
+### Rule 9: Benedictions, Wishes & Optatives (आशीर्वचन)
+Constructs auspicious blessings and desires:
+- `भगवान थारो भलो करै!` *(May God bless you!)*
+Use `rajasthani.build_optative(subject, verb_phrase, blessing=True)`.
+
+### Rule 10: Classical Vat Narrative Story Builder (वात री बनावट)
+Generates historical story discourse opening, body, and moral closure:
+- `"एक समै री बात है। मरुधर देस मांय एक शूरवीर रजपूत रह्वै थो। तद उण धर्म री रक्षा खातर सीस कटाय दियो। कथा पूरी भई, आनंद मंगल भयो।"`
+Use `rajasthani.build_vat_narrative(protagonist, setting, deed)`.
+
+### Rule 11: Synthetic Passive Voice (`-ईजै` / `-इजै`)
 Transforms active sentences into passive or impersonal voice:
 - `राम पोथी बांचै है` $\rightarrow$ `राम सूं पोथी बंचीजै है`
 - `म्हैं काम कियो` $\rightarrow$ `म्हारै सूं काम करीज्यो`
@@ -82,42 +97,48 @@ Use `rajasthani.transform_voice(sentence, target_voice="passive")`.
 
 ---
 
-## 3. Digitized Primary Corpus Sources (31 Texts, 41+ MB)
+## 3. Digitized Primary Corpus Sources (37 Files, 45.52 MB)
 All full-text transcripts are indexed in `data_sources/corpus_catalog.json` and stored in `data_sources/raw_texts/`:
 1. `in.ernet.dli.2015.348143_sitaram_lalas_rajasthani_shabdkosh_vol4.txt` (8.67 MB): *Rajasthani Shabdkosh (Vol IV)*, Dr. Sitaram Lalas.
 2. `in.ernet.dli.2015.345971_sitaram_lalas_rajasthani_sabad_kos_vol2.txt` (6.05 MB): *Rajasthani Sabad Kos (Part 2-2)*, Sitaram Lalas.
-3. `maheshwari_rajasthani_bhasha_sahitya_1960.txt` (2.15 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Hiralal Maheshwari.
-4. `in.ernet.dli.2015.348199_2015.348199.Dhola-Maru_djvu.txt` (2.16 MB): *Dhola Maru Ra Dhoha*, Dr. Bhagwati Lal Rajpurohit.
-5. `in.ernet.dli.2015.314052_2015.314052.Kanhadade-Prabandha_djvu.txt` (1.75 MB): *Kanhadade Prabandha (Vol 1)*, Kavi Padmanabha.
+3. `in.ernet.dli.2015.348199_2015.348199.Dhola-Maru_djvu.txt` (2.16 MB): *Dhola Maru Ra Dhoha*, Dr. Bhagwati Lal Rajpurohit.
+4. `maheshwari_rajasthani_bhasha_sahitya_1960.txt` (2.15 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Hiralal Maheshwari.
+5. `in.ernet.dli.2015.400763_rajasthani_kahawat_kosh.txt` (1.83 MB): *Rajasthani Kahawat Kosh*, Bhagirath Kanoria.
 6. `bhati_rajasthani_madhyakal_1954.txt` (1.77 MB): *Rajasthani Sahitya Ka Madhyakal*, Dr. Narayansingh Bhati.
-7. `in.ernet.dli.2015.443912_2015.443912.Rajasthani-Lok_djvu.txt` (1.69 MB): *Rajasthani Lok Sahitya Ki Saidhanti Vivechna*, Sohandan Charan.
-8. `in.ernet.dli.2015.345924_prakrit_apbransh_dingal_prabhav.txt` (1.63 MB): *Prakrit Aur Apbransh Ka Dingal Sahitya Par Prabhav*, Dr. Govardhan Sharma.
-9. `bhati_dingal_geet_sahitya_1961.txt` (1.41 MB): *Dingal Geet Sahitya*, Dr. Narayansingh Bhati.
-10. `in.ernet.dli.2015.321330_2015.321330.Rajasthani-Bhasha_djvu.txt` (1.35 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Narayansingh Bhati.
-11. `in.ernet.dli.2015.444415_marwari_vyapari.txt` (1.23 MB): *Marwari Vyapari*, Giriraj Shankar Sharma.
-12. `in.ernet.dli.2015.545356_2015.545356.Krisan-Rukmani-Ri-Veli_djvu.txt` (1.15 MB): *Veli Krisan Rukmani Ri*, Rathore Prithviraj / Swami Narottamdas.
-13. `in.ernet.dli.2015.347988_rajasthani_sahitya_kosh_chand.txt` (1.13 MB): *Rajasthani Sahitya Kosh (Chhand Shastra)*, Dr. Narayansingh Bhati.
-14. `grierson_lsi_vol9_rajasthani_1908.txt` (1.03 MB): *LSI Vol. IX Part II: Rajasthani & Gujarati*, Sir George Grierson.
-15. `in.ernet.dli.2015.380463_...txt` (1.01 MB): *Veer Satsai*, Mahakavi Suryamal Misran.
-16. `bhati_dingal_kosh_1978.txt` (788 KB): *Dingal Kosh*, Dr. Narayansingh Bhati.
-17. `ramkrishan_hindi_rajasthani_tulnatmak_1977.txt` (780 KB): *Hindi Aur Rajasthani Bhasha Ka Tulnatmak Adhyan*.
-18. `in.ernet.dli.2015.308096_...txt` (776 KB): *Rajasthani Vat Sahitya*, Dr. Poonam Daiya.
-19. `prabhakar_sahitya_sanskriti_1968.txt` (699 KB): *Rajasthani Sahitya Aur Sanskriti*, Manohar Prabhakar.
-20. `in.ernet.dli.2015.539046_dingal_me_veer_ras.txt` (622 KB): *Dingal Me Veer Ras*, Motilal Menariya.
-21. `in.ernet.dli.2015.442115_...txt` (577 KB): *Rajasthani Bhasha, Sahitya, Sanskriti*, Dr. Ramprasad Dadhich.
-22. `in.ernet.dli.2015.443965_...txt` (539 KB): *Rajasthani Lok Sahitya Adhyan Ke Aayam*, Dr. Ramprasad Dadhich.
-23. `saraswat_dingal_geet_1960.txt` (446 KB): *Dingal Geet*, Rawat Saraswat.
-24. `in.ernet.dli.2015.444198_...txt` (395 KB): *Rajasthani Nibandh*, Manohar Sharma.
-25. `in.ernet.dli.2015.444365_...txt` (363 KB): *Rajasthani Kahani Sangrah (Jaagati Jot)*, Ramesh Dayal.
-26. `menariya_rajasthani_rooprekha_1953.txt` (254 KB): *Rajasthani Bhasha Ki Rooprekha*, Purushottam Menariya.
-27. `chatterji_rajasthani_bhasha_1949.txt` (108 KB): *Rajasthani Bhasha*, Dr. Suniti Kumar Chatterji.
-28. `chandra_singh_loo_1955.txt` (78 KB): *Loo (Ritu Kavya)*, Chandra Singh Birbhadur.
-*(And additional historical texts bringing the total corpus to 31 texts and 41.14 MB!)*
+7. `in.ernet.dli.2015.314052_2015.314052.Kanhadade-Prabandha_djvu.txt` (1.75 MB): *Kanhadade Prabandha (Vol 1)*, Kavi Padmanabha.
+8. `in.ernet.dli.2015.443912_2015.443912.Rajasthani-Lok_djvu.txt` (1.69 MB): *Rajasthani Lok Sahitya Ki Saidhanti Vivechna*, Sohandan Charan.
+9. `in.ernet.dli.2015.345924_prakrit_apbransh_dingal_prabhav.txt` (1.63 MB): *Prakrit Aur Apbransh Ka Dingal Sahitya Par Prabhav*, Dr. Govardhan Sharma.
+10. `bhati_dingal_geet_sahitya_1961.txt` (1.41 MB): *Dingal Geet Sahitya*, Dr. Narayansingh Bhati.
+11. `in.ernet.dli.2015.321330_2015.321330.Rajasthani-Bhasha_djvu.txt` (1.35 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Narayansingh Bhati.
+12. `in.ernet.dli.2015.444415_marwari_vyapari.txt` (1.23 MB): *Marwari Vyapari*, Giriraj Shankar Sharma.
+13. `in.ernet.dli.2015.545356_2015.545356.Krisan-Rukmani-Ri-Veli_djvu.txt` (1.15 MB): *Veli Krisan Rukmani Ri*, Rathore Prithviraj / Swami Narottamdas.
+14. `in.ernet.dli.2015.347988_rajasthani_sahitya_kosh_chand.txt` (1.13 MB): *Rajasthani Sahitya Kosh (Chhand Shastra)*, Dr. Narayansingh Bhati.
+15. `grierson_lsi_vol9_rajasthani_1908.txt` (1.03 MB): *LSI Vol. IX Part II: Rajasthani & Gujarati*, Sir George Grierson.
+16. `in.ernet.dli.2015.380463_...txt` (1.01 MB): *Veer Satsai*, Mahakavi Suryamal Misran.
+17. `padam_bhagat_rukamani_mangal_harji_ro_vyambalo_1977.txt` (1.00 MB): *Rukamani Mangal & Harji Ro Vyambalo*, Padam Bhagat.
+18. `in.ernet.dli.2015.306886_parampra_dingal_kosh.txt` (848 KB): *Parampra Dingal Kosh*, Dr. Narayansingh Bhati.
+19. `bhati_dingal_kosh_1978.txt` (788 KB): *Dingal Kosh*, Dr. Narayansingh Bhati.
+20. `ramkrishan_hindi_rajasthani_tulnatmak_1977.txt` (780 KB): *Hindi Aur Rajasthani Bhasha Ka Tulnatmak Adhyan*.
+21. `in.ernet.dli.2015.308096_...txt` (776 KB): *Rajasthani Vat Sahitya*, Dr. Poonam Daiya.
+22. `prabhakar_sahitya_sanskriti_1968.txt` (699 KB): *Rajasthani Sahitya Aur Sanskriti*, Manohar Prabhakar.
+23. `in.ernet.dli.2015.539046_dingal_me_veer_ras.txt` (622 KB): *Dingal Me Veer Ras*, Motilal Menariya.
+24. `in.ernet.dli.2015.442115_...txt` (577 KB): *Rajasthani Bhasha, Sahitya, Sanskriti*, Dr. Ramprasad Dadhich.
+25. `in.ernet.dli.2015.443965_...txt` (539 KB): *Rajasthani Lok Sahitya Adhyan Ke Aayam*, Dr. Ramprasad Dadhich.
+26. `saraswat_dingal_geet_1960.txt` (446 KB): *Dingal Geet*, Rawat Saraswat.
+27. `in.ernet.dli.2015.444198_...txt` (395 KB): *Rajasthani Nibandh*, Manohar Sharma.
+28. `tessitori_veli_krisana_rukamani_ri_asiatic_1919.txt` (390 KB): *Veli Krisana Rukamani Ri (Asiatic Society Edition)*, Dr. L.P. Tessitori.
+29. `in.ernet.dli.2015.444365_...txt` (363 KB): *Rajasthani Kahani Sangrah (Jaagati Jot)*, Ramesh Dayal.
+30. `narsi_mehta_ka_bada_mamera_marwari.txt` (294 KB): *Narsi Mehta Ka Bada Mamera*, Ram Ratan Darak.
+31. `menariya_rajasthani_rooprekha_1953.txt` (254 KB): *Rajasthani Bhasha Ki Rooprekha*, Purushottam Menariya.
+32. `tessitori_vithu_sujo_chanda_rau_jeta_si_ro_1920.txt` (232 KB): *Chhanda Rau Jeta Si Ro*, Vithu Sujo / Dr. L.P. Tessitori.
+33. `chatterji_rajasthani_bhasha_1949.txt` (108 KB): *Rajasthani Bhasha*, Dr. Suniti Kumar Chatterji.
+34. `chandra_singh_loo_1955.txt` (78 KB): *Loo (Ritu Kavya)*, Chandra Singh Birbhadur.
+*(Total corpus: 37 files, 45.52 MB / 47,731,709 bytes).*
 
 ---
 
 ## 4. Lexicon, Folklore & Cultural Heritage
-- **Lexicon**: **1,027+ fully verified lemmas** with Devanagari, IAST romanization, detailed English meaning, Hindi gloss, grammatical POS, gender, dialect, and illustrative example sentences across 20+ domains.
+- **Lexicon**: **1,204+ fully verified lemmas** with Devanagari, IAST romanization, detailed English meaning, Hindi gloss, grammatical POS, gender, dialect, and illustrative example sentences across 25+ domains.
 - **Idioms (मुहावरा)**: **42 authentic idioms** (`पगड़ी राखणी`, `खांडे री धार माथे चालणो`, `हाथ पीले करणा`, `घोड़े बेच'र सोवणो`, `घी के दीवे जळावणा`, `दांत खट्टे करणा`, `सांढणी री चाल चलणो`, `हवेली रो दीवलो`).
 - **Proverbs (कहावत / औखाणा)**: **39 traditional proverbs** (`साच नै आँच कोनी`, `गादड़ रो सींग नीं व्है`, `ऊंट किस करवट बैठै`, `धोरी रै माथै सींग, अर रजपूत रै माथै पाग`, `आप मुआं बिना सुरग नीं दीखै`).
 - **Riddles (आड़ी / बुझावळ)**: **11 traditional riddles** with solutions and cultural metaphors.
@@ -140,12 +161,12 @@ rajasthani.run_server(port=8000)
 Interactive Endpoints:
 - `GET /api/translate?text=...&dialect=...` - Universal translator
 - `GET /api/conjugate?verb=...&tense=...` - Morphological verb conjugator
-- `GET /api/dictionary?q=...` - Full-text lexicon search (1,027+ words)
+- `GET /api/dictionary?q=...` - Full-text lexicon search (1,204+ words)
 - `GET /api/numbers?val=...` - Number to Devanagari words & digits
 - `GET /api/rituals?category=...` - Traditional lifecycle rituals (36 entries)
 - `GET /api/ornaments?part=...` - Traditional jewelry (53 entries)
 - `GET /api/syntax` - Structured syntax, split-ergativity, causatives, and dialect rules
-- `GET /api/corpus` - Catalog of 31 digitized historical texts (41.14 MB)
+- `GET /api/corpus` - Catalog of 34 digitized historical texts (45.52 MB)
 - `GET /api/idioms` - Authentic idioms and sayings (42 entries)
 - `GET /api/folklore` - Folk proverbs and riddles (50 entries)
 
@@ -155,7 +176,7 @@ Interactive Endpoints:
 ```python
 import rajasthani
 
-# 1. Dictionary & Lexicon (1,027+ words)
+# 1. Dictionary & Lexicon (1,204+ words)
 w = rajasthani.lookup("सांग")
 print(w.english)  # "traditional Rajput iron lance or javelin wielded on horseback"
 
@@ -167,27 +188,22 @@ s = rajasthani.hindi_to_rajasthani("मैं पानी पी रहा थ�
 cv = rajasthani.build_compound_verb("खाणो", vector_verb="लेणो", tense=rajasthani.Tense.PAST)
 # -> "खाय लियो"
 
-# 4. Complex Correlatives
+# 4. Complex Correlatives & Counterfactuals
 sent = rajasthani.build_complex_sentence("मेह बरस्यो", "फसल चोखी व्हैला", connector_type="conditional")
 # -> "जे मेह बरस्यो, तो फसल चोखी व्हैला।"
 
-# 5. Causatives
+cf = rajasthani.build_counterfactual_conditional("मेह बरसतो", "अकाल नीं पड़तो")
+# -> "जे मेह बरसतो, तो अकाल नीं पड़तो।"
+
+# 5. Causatives & Imperatives
 caus1 = rajasthani.generate_causative("करणो", level=1)  # "करावणो"
-caus2 = rajasthani.generate_causative("करणो", level=2)  # "करवावणो"
+imp_royal = rajasthani.build_imperative("बैठणो", politeness_level="honorific")  # "आप विराजो सा"
 
-# 6. Imperatives & Honorific Registers
-imp_intimate = rajasthani.build_imperative("लिखणो", politeness_level="intimate")  # "तूं लिख"
-imp_royal = rajasthani.build_imperative("बैठणो", politeness_level="honorific")     # "आप विराजो सा"
+# 6. Optatives & Folk Vat Narrative
+blessing = rajasthani.build_optative("भगवान", "थारो भलो करै")  # "भगवान थारो भलो करै!"
+vat = rajasthani.build_vat_narrative("राव जेतासी", "बीकानेर दुर्ग", "शत्रु दल नै परास्त कियो")
 
-# 7. Clusivity
-incl = rajasthani.convert_clusivity("हम चालेंगे", inclusive=True)   # "आपां चालेंगे"
-excl = rajasthani.convert_clusivity("आपां चालेंगे", inclusive=False)  # "म्हे चालेंगे"
-
-# 8. Synthetic Passive Voice
-pass_sent = rajasthani.transform_voice("राम पोथी बांचै है")  # "राम रै हाथूं पोथी बंचीजै है।"
-
-# 9. Kinship & Culture
-kin = rajasthani.resolve_kinship("साढू")
-rituals = rajasthani.get_all_rituals()
-ornaments = rajasthani.get_all_ornaments()
+# 7. Clusivity & Passive Voice
+incl = rajasthani.convert_clusivity("हम चालेंगे", inclusive=True)  # "आपां चालेंगे"
+pass_sent = rajasthani.transform_voice("राम पोथी बांचै है")         # "राम रै हाथूं पोथी बंचीजै है।"
 ```
