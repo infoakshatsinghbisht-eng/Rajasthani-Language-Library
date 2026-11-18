@@ -1,0 +1,7 @@
+include README.md
+include LICENSE
+include requirements.txt
+include DOCUMENTATION.md
+recursive-include rajasthani/lexicon/data *.json
+recursive-include rajasthani/culture/data *.json
+recursive-include rajasthani/web/static *.*

@@ -1,0 +1,184 @@
+[
+  {
+    "category": "greetings",
+    "english": "Hello / Greetings!",
+    "hindi": "नमस्ते / प्रणाम",
+    "rajasthani": "खम्मा घणी सा!",
+    "roman": "Khamma Ghani Sa!"
+  },
+  {
+    "category": "greetings",
+    "english": "May you be blessed with longevity (Response to Khamma Ghani)",
+    "hindi": "बहुत-बहुत नमस्कार / घणी खम्मा",
+    "rajasthani": "घणी खम्मा सा!",
+    "roman": "Ghani Khamma Sa!"
+  },
+  {
+    "category": "greetings",
+    "english": "Ram Ram (universal greeting)",
+    "hindi": "राम राम सा",
+    "rajasthani": "राम राम सा!",
+    "roman": "Ram Ram Sa!"
+  },
+  {
+    "category": "hospitality",
+    "english": "Welcome to our land / Welcome home!",
+    "hindi": "हमारे देश / घर में आपका स्वागत है",
+    "rajasthani": "पधारो म्हारे देस!",
+    "roman": "Padhaaro Mhaare Des!"
+  },
+  {
+    "category": "inquiry",
+    "english": "How are you?",
+    "hindi": "आप कैसे हैं? / क्या हाल चाल है?",
+    "rajasthani": "थें कियां हो सा? / कांई हाल-चाल है?",
+    "roman": "Then kiyan ho sa? / Kaain haal-chaal hai?"
+  },
+  {
+    "category": "inquiry",
+    "english": "I am fine / Everything is great.",
+    "hindi": "मैं बिल्कुल ठीक हूँ / सब बढ़िया है।",
+    "rajasthani": "म्हूँ बिल्कुल चोखो हूँ सा / सगळो चोखो है।",
+    "roman": "Mhoon bilkul chokho hoon sa / Saglo chokho hai."
+  },
+  {
+    "category": "inquiry",
+    "english": "What is your name?",
+    "hindi": "आपका क्या नाम है?",
+    "rajasthani": "आपरो कांई नांव है सा?",
+    "roman": "Aapro kaain naanv hai sa?"
+  },
+  {
+    "category": "inquiry",
+    "english": "My name is Ram.",
+    "hindi": "मेरा नाम राम है।",
+    "rajasthani": "म्हारो नांव राम है सा।",
+    "roman": "Mhaaro naanv Ram hai sa."
+  },
+  {
+    "category": "inquiry",
+    "english": "Where are you going?",
+    "hindi": "आप कहाँ जा रहे हैं?",
+    "rajasthani": "थें कठे जा रह्या हो सा?",
+    "roman": "Then kathe jaa rahya ho sa?"
+  },
+  {
+    "category": "inquiry",
+    "english": "I am going to the village.",
+    "hindi": "मैं गाँव जा रहा हूँ।",
+    "rajasthani": "म्हूँ गाँव जा रह्यो हूँ।",
+    "roman": "Mhoon gaanv jaa rahyo hoon."
+  },
+  {
+    "category": "hospitality",
+    "english": "Please have some tea and water.",
+    "hindi": "चाय पानी पीजिए।",
+    "rajasthani": "चाय-पाणी पियो सा।",
+    "roman": "Chaay-paani piyo sa."
+  },
+  {
+    "category": "hospitality",
+    "english": "Please have some food.",
+    "hindi": "भोजन कर लीजिए / खाना खाइए।",
+    "rajasthani": "जीमो सा / खाणो खावो।",
+    "roman": "Jeemo sa / Khaano khaavo."
+  },
+  {
+    "category": "politeness",
+    "english": "Thank you very much.",
+    "hindi": "आपका बहुत-बहुत धन्यवाद।",
+    "rajasthani": "आपरी घणी मेहरबानी सा।",
+    "roman": "Aapree ghanee meharbaanee sa."
+  },
+  {
+    "category": "politeness",
+    "english": "Please visit again / Come to my house.",
+    "hindi": "फिर आइएगा / हमारे घर आइएगा।",
+    "rajasthani": "म्हारै घरे फेर आज्यो सा।",
+    "roman": "Mhaarai ghare pher aajyo sa."
+  },
+  {
+    "category": "daily_life",
+    "english": "What is the time right now?",
+    "hindi": "अभी क्या समय हुआ है?",
+    "rajasthani": "अबार कित्ता बज्या हैं?",
+    "roman": "Abaar kitta bajya hain?"
+  },
+  {
+    "category": "daily_life",
+    "english": "The weather is very pleasant today.",
+    "hindi": "आज मौसम बहुत सुहावना है।",
+    "rajasthani": "आज मौसम घणो चोखो है सा।",
+    "roman": "Aaj mausam ghano chokho hai sa."
+  },
+  {
+    "category": "commerce",
+    "english": "What is the price of this?",
+    "hindi": "इसका क्या भाव है / यह कितने का है?",
+    "rajasthani": "ईंरो कांई भाव है सा? / कित्ता रुपिया है?",
+    "roman": "Eenro kaain bhaav hai sa? / Kitta rupiya hai?"
+  },
+  {
+    "category": "directions",
+    "english": "Which way does this road go?",
+    "hindi": "यह रास्ता कहाँ जाता है?",
+    "rajasthani": "यो रस्तो कठे जावै है?",
+    "roman": "Yo rasto kathe jaavai hai?"
+  },
+  {
+    "rajasthani": "जीमबा पधारो सा!",
+    "roman": "Jeemba padhaaro sa!",
+    "hindi": "भोजन करने पधारिए सा!",
+    "english": "Please grace us and come feast!",
+    "category": "hospitality",
+    "dialect": "general"
+  },
+  {
+    "rajasthani": "खम्मा घणी, हुकम सा!",
+    "roman": "Khamma ghani, hukam sa!",
+    "hindi": "अत्यंत आदरपूर्वक नमस्कार, महाराज/श्रीमान!",
+    "english": "Abundant greetings, noble lord/sir!",
+    "category": "greetings",
+    "dialect": "general"
+  },
+  {
+    "rajasthani": "थारो घणो-घणो आभार सा।",
+    "roman": "Thaaro ghano-ghano aabhaar sa.",
+    "hindi": "आपका बहुत-बहुत आभार सा।",
+    "english": "Heartfelt and immense gratitude to you.",
+    "category": "etiquette",
+    "dialect": "general"
+  },
+  {
+    "rajasthani": "आनंद मांय रहो सा।",
+    "roman": "Aanand maany raho sa.",
+    "hindi": "सदा आनंद में रहिए सा।",
+    "english": "May you abide in perpetual bliss and joy.",
+    "category": "blessings",
+    "dialect": "general"
+  },
+  {
+    "rajasthani": "पाणी पीवो सा, छाया मांय विराजो।",
+    "roman": "Paani peevo sa, chhaaya maany viraajo.",
+    "hindi": "पानी पीजिए सा, छाया में बैठिए।",
+    "english": "Have some cool water, please take your seat in the cool shade.",
+    "category": "hospitality",
+    "dialect": "general"
+  },
+  {
+    "rajasthani": "धीरज राखो, सगळो काम चोखो व्हैला।",
+    "roman": "Dheeraj raakho, sagalo kaam chokho vhaila.",
+    "hindi": "धैर्य रखिए, सब काम अच्छा होगा।",
+    "english": "Keep patience, everything will turn out splendidly.",
+    "category": "conversation",
+    "dialect": "general"
+  },
+  {
+    "rajasthani": "काले फेर म्हे भेळा व्हैस्यां।",
+    "roman": "Kaale pher mhe bhela vhaisyaan.",
+    "hindi": "कल फिर हम सब इकट्ठा मिलेंगे।",
+    "english": "Tomorrow we shall all gather together again.",
+    "category": "parting",
+    "dialect": "general"
+  }
+]

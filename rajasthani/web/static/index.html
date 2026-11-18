@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>राजस्थानी भाषा मानक पुस्तकालय | Rajasthani Language Library</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Yatra+One&family=Noto+Sans+Devanagari:wght@400;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header with Royal Rajasthani Theme -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-box">
+        <span class="royal-crest">🐫</span>
+        <div>
+          <h1>राजस्थानी भाषा मानक पुस्तकालय</h1>
+          <p class="subtitle">Rajasthani Language Standard Library for Python & Web</p>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge">ISO 639-3: raj / mwr</span>
+        <span class="badge gold">पधारो म्हारे देस</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="nav-tabs">
+    <div class="nav-inner">
+      <button class="tab-btn active" data-tab="tab-translate">🌐 अनुवादक (Translator)</button>
+      <button class="tab-btn" data-tab="tab-conjugator">⚙️ क्रिया रूप (Conjugator)</button>
+      <button class="tab-btn" data-tab="tab-dict">📖 शब्दकोश (Dictionary)</button>
+      <button class="tab-btn" data-tab="tab-numbers">🔢 गिनती (Numbers)</button>
+      <button class="tab-btn" data-tab="tab-culture">🏰 संस्कृति (Culture & Heritage)</button>
+      <button class="tab-btn" data-tab="tab-rituals">💍 संस्कार अर गहणा (Rituals & Jewels)</button>
+      <button class="tab-btn" data-tab="tab-corpus">📚 साहित्य अर व्याकरण (Corpus & Grammar)</button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="container">
+    <!-- 1. Universal Translator Tab -->
+    <section id="tab-translate" class="tab-content active">
+      <div class="card">
+        <h2>विश्व भाषा सूं राजस्थानी अनुवादक (Universal Translator)</h2>
+        <p class="desc">Translate from English, Hindi, or any world language into authentic Rajasthani across dialects.</p>
+        
+        <div class="input-grid">
+          <div class="input-col">
+            <label for="src-text">मूल पाठ (Source Text):</label>
+            <textarea id="src-text" placeholder="Type here in English, Hindi, or any world language (e.g. 'How are you?', 'Welcome to Rajasthan', 'आप कैसे हैं?')">How are you?</textarea>
+            
+            <div class="controls-row">
+              <label for="dialect-select">बोली (Dialect):</label>
+              <select id="dialect-select">
+                <option value="mwr">मारवाड़ी (Marwari - Standard)</option>
+                <option value="mew">मेवाड़ी (Mewari)</option>
+                <option value="dhd">ढूंढाड़ी / जयपुरी (Dhundhari)</option>
+                <option value="hoj">हाड़ौती (Harauti)</option>
+                <option value="swv">शेखावाटी (Shekhawati)</option>
+              </select>
+              <button id="btn-translate" class="btn primary">अनुवाद करो (Translate)</button>
+            </div>
+          </div>
+
+          <div class="output-col">
+            <label>राजस्थानी अनुवाद (Rajasthani Output):</label>
+            <div id="trans-output" class="result-box">
+              <div class="res-raj">थें कियां हो सा?</div>
+              <div class="res-roman">then kiyan ho sa?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Verb Conjugator Tab -->
+    <section id="tab-conjugator" class="tab-content">
+      <div class="card">
+        <h2>क्रिया रूप शोधक (Morphological Verb Conjugator)</h2>
+        <p class="desc">Generate authentic Rajasthani verb conjugations across tenses, aspects, genders, and persons.</p>
+        
+        <div class="controls-grid">
+          <div>
+            <label>क्रिया (Verb Infinitive / Root):</label>
+            <input type="text" id="verb-input" value="खाणो" placeholder="e.g. खाणो, जाणो, करणो, बोलणो">
+          </div>
+          <div>
+            <label>काल (Tense):</label>
+            <select id="tense-select">
+              <option value="present">वर्तमान काल (Present)</option>
+              <option value="past">भूतकाल (Past Perfective)</option>
+              <option value="future">भविष्य काल (Future)</option>
+              <option value="continuous">अपूर्ण वर्तमान (Continuous)</option>
+              <option value="past_continuous">अपूर्ण भूतकाल (Past Continuous)</option>
+              <option value="presumptive">संभाव्य / अनुमान (Presumptive)</option>
+              <option value="imperative">आज्ञा / आदर (Imperative)</option>
+            </select>
+          </div>
+          <div>
+            <label>पुरुष (Person):</label>
+            <select id="person-select">
+              <option value="first">प्रथम पुरुष / उत्तम पुरुष (1st Person - म्हूँ / आपां)</option>
+              <option value="second">मध्यम पुरुष (2nd Person - थूँ / थें)</option>
+              <option value="third" selected>अन्य पुरुष (3rd Person - वो / वे)</option>
+            </select>
+          </div>
+          <div>
+            <label>लिंग (Gender):</label>
+            <select id="gender-select">
+              <option value="masculine">पुल्लिंग (Masculine)</option>
+              <option value="feminine">स्त्रीलिंग (Feminine)</option>
+            </select>
+          </div>
+          <div>
+            <label>वचन (Number):</label>
+            <select id="number-select">
+              <option value="singular">एकवचन (Singular)</option>
+              <option value="plural">बहुवचन (Plural)</option>
+            </select>
+          </div>
+        </div>
+        <button id="btn-conjugate" class="btn primary mt-3">रूप बणावो (Conjugate)</button>
+
+        <div id="conjugate-result" class="result-box mt-4">
+          <div class="res-raj">खावै है</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Dictionary Tab -->
+    <section id="tab-dict" class="tab-content">
+      <div class="card">
+        <h2>राजस्थानी शब्दकोश (Rajasthani Lexicon & Dictionary)</h2>
+        <p class="desc">Search words across Rajasthani, Hindi, English, and Romanized spellings.</p>
+
+        <div class="search-bar">
+          <input type="text" id="dict-search" placeholder="Search word (e.g. 'खम्मा घणी', 'चोखो', 'water', 'camel', 'घोड़ो')...">
+          <button id="btn-search-dict" class="btn primary">खोजो (Search)</button>
+        </div>
+
+        <div id="dict-results" class="dict-grid mt-4">
+          <!-- Dynamic Results -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Numbers Tab -->
+    <section id="tab-numbers" class="tab-content">
+      <div class="card">
+        <h2>राजस्थानी संख्या अर गिनती (Numbers Converter)</h2>
+        <p class="desc">Convert any integer into Rajasthani words, Devanagari numerals, and ordinal rankings.</p>
+
+        <div class="search-bar">
+          <input type="number" id="num-input" value="42" placeholder="Enter integer (e.g. 42, 105, 1000)">
+          <button id="btn-convert-num" class="btn primary">शब्दों में लिखो (Convert)</button>
+        </div>
+
+        <div id="num-result" class="result-box mt-4">
+          <div class="res-raj">बयालीस</div>
+          <div class="res-details">देवनागरी अंक: ४२ | क्रमसूचक: बयालीसवां</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Culture Tab -->
+    <section id="tab-culture" class="tab-content">
+      <div class="card">
+        <h2>राजस्थानी संस्कृति अर धरोहर (Cultural Heritage Explorer)</h2>
+        <p class="desc">Explore traditional architecture, music, folk deities, festivals, cuisine, and literature.</p>
+
+        <div class="culture-cards-grid mt-4">
+          <div class="culture-card">
+            <h3>🏰 स्थापत्य (Architecture)</h3>
+            <p>हवेली, झरोखा, छतरी, बावड़ी (Abhaneri Chand Baori), पोळ, मांडणा कला।</p>
+          </div>
+          <div class="culture-card">
+            <h3>🎶 लोक वाद्य अर नृत्य (Music & Dance)</h3>
+            <p>रावणहत्थो, कमायचो, खड़ताल, अळगोजो, चंग; घूमर, कालबेलिया (UNESCO)।</p>
+          </div>
+          <div class="culture-card">
+            <h3>🍛 पारंपरिक भोजन (Royal Cuisine)</h3>
+            <p>दाल बाती चूरमो, केर सांगरी, गट्टे री सब्जी, घेवर, बाजरे रो सोगरो, राबड़ी।</p>
+          </div>
+          <div class="culture-card">
+            <h3>🙏 लोक देवता (Folk Deities)</h3>
+            <p>पंच पीर: बाबा रामदेवजी, पाबूजी राठौड़, गोगाजी; वीर तेजाजी, करणी माता।</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 6. Rituals & Ornaments Tab -->
+    <section id="tab-rituals" class="tab-content">
+      <div class="card">
+        <h2>राजस्थानी संस्कार अर पारंपरिक गहणा (Rituals & Traditional Ornaments)</h2>
+        <p class="desc">Explore authentic lifecycle rituals (जन्म, ब्याव, मोसर) and head-to-toe jewelry (शीशफूल, आड़, रखड़ी, चूड़ो, आंवळा, रमझोल).</p>
+        
+        <div class="filter-row mt-3">
+          <label>वर्ग (Category):</label>
+          <select id="ritual-filter">
+            <option value="all">सगळा संस्कार (All Rituals)</option>
+            <option value="birth_childhood">जन्म अर बाल्य संस्कार (Natal & Childhood)</option>
+            <option value="wedding">ब्याव-शादी रा रीत-रिवाज (Wedding Ceremonies)</option>
+            <option value="festival_ritual">ऋतु अर लोक-उत्सव (Seasonal Observances)</option>
+            <option value="memorial">अंतिम संस्कार अर मर्याद (Memorial Rites)</option>
+          </select>
+        </div>
+
+        <div id="rituals-grid" class="culture-cards-grid mt-4">
+          <!-- Dynamically populated -->
+        </div>
+
+        <h3 class="mt-5">💎 पारंपरिक आभूषण (Traditional Jewelry)</h3>
+        <div class="filter-row mt-3">
+          <label>अंग (Body Part):</label>
+          <select id="ornament-filter">
+            <option value="all">सगळा गहणा (All Ornaments)</option>
+            <option value="head">सिर अर माथो (Head & Forehead)</option>
+            <option value="ear">कान (Ears)</option>
+            <option value="nose">नाक (Nose)</option>
+            <option value="neck">गळो अर छाती (Neck)</option>
+            <option value="arm">बाजू (Arms)</option>
+            <option value="wrist">कलाई अर हाथ (Wrist & Hands)</option>
+            <option value="finger">आंगळी (Fingers)</option>
+            <option value="waist">कमर (Waist)</option>
+            <option value="foot">पग अर आंगळियां (Feet & Ankles)</option>
+          </select>
+        </div>
+
+        <div id="ornaments-grid" class="culture-cards-grid mt-4">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Corpus & Grammar Tab -->
+    <section id="tab-corpus" class="tab-content">
+      <div class="card">
+        <h2>डिजिटल ग्रंथ-संग्रह अर व्याकरण नियम (Corpus & Syntax Rules)</h2>
+        <p class="desc">16 Primary digitized historical texts (~14 MB corpus) and fundamental Rajasthani syntax laws.</p>
+
+        <div class="grammar-summary-box mt-3">
+          <h3>📜 वाक्य रचना अर रूपांतरण नियम (Sentence Construction Rules)</h3>
+          <ul>
+            <li><strong>SOV Word Order:</strong> कर्ता (Subject) - कर्म (Object) - क्रिया (Verb)। e.g. <code>राम पोथी पढ़ै है।</code></li>
+            <li><strong>Split Ergativity (विभक्त कर्तृवाच्य):</strong> भूतकाल में सकर्मक क्रिया के साथ कर्ता में 'नै' (या म्हां/तैं/उण) लगता है और क्रिया कर्म के लिंग-वचन अनुसार बदलती है: <code>राम नै पोथी पढ़ी</code> (पोथी स्त्रीलिंग -> पढ़ी), <code>सीता नै आंबा खायो</code> (आंबा पुल्लिंग -> खायो)।</li>
+            <li><strong>Clusivity (समावेशी आपां vs अपवर्जी म्हें):</strong> 'आपां' में श्रोता शामिल है (हम सब), 'म्हें' में श्रोता शामिल नहीं है (हम, तुम नहीं)।</li>
+            <li><strong>Dialectal Copula Shifts:</strong> मारवाड़ी <code>है / थो</code> vs ढूंढाड़ी <code>छै / छो</code> vs मेवाड़ी <code>है / हो</code>।</li>
+          </ul>
+        </div>
+
+        <h3 class="mt-5">📚 संगृहीत डिजिटल पुस्तकें (Digitized Corpus Catalog)</h3>
+        <div id="corpus-grid" class="culture-cards-grid mt-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>राजस्थानी भाषा मानक पुस्तकालय (Rajasthani Language Library) | Created by Akshat Singh Bisht</p>
+    <p>Open Source under the MIT License | <a href="https://akshatsinghbisht.com/" target="_blank">akshatsinghbisht.com</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Pure python core with zero required external dependencies!
+# Optional neural adapter dependencies:
+# google-genai>=0.1.0
+# openai>=1.0.0

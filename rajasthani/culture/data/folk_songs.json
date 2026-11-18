@@ -1,0 +1,47 @@
+[
+  {
+    "title": "केसरिया बालम (Kesariya Balam)",
+    "roman": "Kesariya Balam",
+    "theme": "Welcome & longing (मांड राग / Maand Raga)",
+    "raag": "मांड (Maand)",
+    "opening_lines": "केसरिया बालम आओ नी, पधारो म्हारे देस।",
+    "english_translation": "O saffron-turbaned beloved, come grace our land with your presence.",
+    "cultural_notes": "Official cultural welcome anthem of Rajasthan, sung in the royal courtly Maand raga by Allah Jilai Bai and Gavari Devi."
+  },
+  {
+    "title": "घूमर (Ghoomar Folk Song)",
+    "roman": "Ghoomar",
+    "theme": "Festive dance & bridal joy",
+    "raag": "लोक मांड",
+    "opening_lines": "म्हारी घूमर छै नखराली ए माँ, घूमर रमवा म्हें जास्यां।",
+    "english_translation": "O mother, my swirling Ghoomar is charmingly graceful; we shall go dance the Ghoomar.",
+    "cultural_notes": "Celebrated at Gangaur, Teej, and royal weddings as daughters dance with grace."
+  },
+  {
+    "title": "चिरमी (Chirmi)",
+    "roman": "Chirmi",
+    "theme": "Longing for parental home (पीहर री ओळूँ)",
+    "raag": "लोक धुन",
+    "opening_lines": "चिरमी रा डाला चार, वारी जाऊं चिरमी नै। म्हारो बीरो आयो सा, बाबोसा भेज्यो सा।",
+    "english_translation": "The Chirmi vine has four branches, I adore the Chirmi vine. My brother has arrived to take me home, sent by my dear father.",
+    "cultural_notes": "Deeply emotional song of a newlywed bride waiting atop the roof for her brother to arrive from her childhood village."
+  },
+  {
+    "title": "कुरजां (Kurjan)",
+    "roman": "Kurjan",
+    "theme": "Messenger bird to distant beloved",
+    "raag": "मांड",
+    "opening_lines": "कुरजां ए म्हारो भंवर मिला द्यो ए, साहिबा नै दीज्यो म्हारा राम-राम।",
+    "english_translation": "O migratory crane (Kurjan), reunite me with my beloved; convey my respects to my master across distant lands.",
+    "cultural_notes": "The Demoiselle cranes migrating to Kheechan (Phalodi) in thousands become the poetic messengers of love."
+  },
+  {
+    "title": "गोरबंद (Gorbandh)",
+    "roman": "Gorbandh",
+    "theme": "Ornamentation of the camel",
+    "raag": "फागण लोक धुन",
+    "opening_lines": "म्हारी गोरबंद नखरालो, आलीजा म्हारो गोरबंद नखरालो।",
+    "english_translation": "My ornate camel-neck ornament is truly majestic, O beloved my Gorbandh is graceful.",
+    "cultural_notes": "Celebrates the loving hand-weaving of cowrie shells, beads, and colored wool ribbons (Gorbandh) to adorn the camel."
+  }
+]
