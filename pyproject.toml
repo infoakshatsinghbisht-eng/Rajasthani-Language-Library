@@ -8,7 +8,7 @@ version = "1.0.0"
 authors = [
     { name = "Akshat Singh Bisht", email = "infoakshatsinghbisht@gmail.com" }
 ]
-description = "Rajasthani (राजस्थानी) Language Standard Library: Multi-Dialect Translation, Morphological Conjugation, Voice AI & Cultural Heritage"
+description = "Rajasthani (राजस्थानी) Language Standard Library: Multi-Dialect Translation, Morphological Conjugation, Voice Processing & Cultural Heritage"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
@@ -26,11 +26,11 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://akshatsinghbisht.com/"
-GitHub = "https://github.com/infoakshatsinghbisht-eng/rajasthani-language-library"
+GitHub = "https://github.com/infoakshatsinghbisht-eng/Rajasthani-Language-Library"
 LinkedIn = "https://www.linkedin.com/in/akshat-singh-bisht-digital-performance-marketing-specialist/"
 "Amazon Author" = "https://www.amazon.com/stores/Akshat-Singh-Bisht/author/B0D5TYDT28"
 ResearchGate = "https://www.researchgate.net/profile/Akshat-Bisht-8"
-"Bug Tracker" = "https://github.com/infoakshatsinghbisht-eng/rajasthani-language-library/issues"
+"Bug Tracker" = "https://github.com/infoakshatsinghbisht-eng/Rajasthani-Language-Library/issues"
 
 [project.scripts]
 rajasthani = "rajasthani.cli:main"
