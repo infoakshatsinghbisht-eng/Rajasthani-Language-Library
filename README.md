@@ -7,21 +7,23 @@ A standard-library-style computational linguistics toolkit, translator, and gram
 1. **Universal Translation Engine (`rajasthani.translate`, `rajasthani.hindi_to_rajasthani`)**:
    - Translate from English, Hindi, and world languages into Rajasthani.
    - Dialect support: Marwari (`mwr`), Mewari (`mew`), Dhundhari (`dhd`), Harauti (`hoj`), Shekhawati (`swv`).
-2. **Morphological Verb Conjugator (`rajasthani.conjugate`)**:
+2. **Morphological Verb Conjugator & Syntax Engine (`rajasthani.conjugate`, `rajasthani.build_compound_verb`, `rajasthani.build_complex_sentence`)**:
    - Conjugates verbs across tenses (Present, Past, Future, Continuous, Presumptive, Imperative).
-   - Ergative past alignment with transitive verbs (`राम नै रोटी खाई`).
-3. **Lexicon & Proverbs (`rajasthani.lookup`, `rajasthani.search`)**:
-   - 273+ cataloged and verified words, authentic idioms, proverbs (कहावतें), and riddles (पहेलियाँ).
+   - Compound verbs with aspectual vectors (`खाय लियो`, `दे दीनो`, `चाल पड़्यो`, `बोल उठ्यो`).
+   - Correlative complex clauses (`जे... तो`, `जद... तद`, `जको... वो`, `जठै... वठै`, `जियां... तियां`).
+   - Split ergativity past alignment with direct object agreement (`राम नै पोथी पढ़ी` vs `राम नै आंबा खायो`).
+3. **Lexicon, Idioms & Folklore (`rajasthani.lookup`, `rajasthani.get_idioms`, `rajasthani.get_proverbs`, `rajasthani.get_riddles`)**:
+   - 450+ cataloged and verified words, 20+ authentic idioms (मुहावरे), 30 proverbs (कहावतें), and 11 riddles (पहेलियाँ).
 4. **Kinship & Social Relationships (`rajasthani.resolve_kinship`)**:
-   - Comprehensive resolution of family, affinal, sibling, and friends terminology.
+   - Comprehensive resolution of paternal, maternal, affinal (साढू, नणदोई), sibling, sworn (धरम-भाई), and friends terminology.
 5. **Traditional Ornaments & Rituals (`rajasthani.culture`)**:
-   - Dedicated modules for lifecycle rituals (जन्म, मुंडन, ब्याव, माहेरो) and head-to-toe ornaments.
+   - Dedicated modules for 32+ lifecycle rituals (जन्म, मुंडन, ब्याव, माहेरो, रातीजोगा) and 40+ head-to-toe ornaments (रखड़ी, शीशफूल, आड़, तिमणियो, गोखरू, आंवळा, रमझोल).
 6. **Numbers & Numerals (`rajasthani.num_to_words`)**:
    - Full integer to word conversion (0 to 100,000,000+), Devanagari numerals (०-९), ordinals, and fractions.
-7. **Digitized Primary Corpus**:
-   - Over 9.5 MB of scanned foundational texts downloaded and parsed in `data_sources/raw_texts/`.
+7. **Digitized Primary Corpus (20 Historical Texts, ~16 MB)**:
+   - Scanned foundational texts downloaded and parsed in `data_sources/raw_texts/` including *Veer Satsai*, *Dingal Kosh*, *Rajasthani Vat Sahitya*, *Loo*, *Jaagati Jot*, and Grierson's *LSI*.
 8. **Interactive Web UI & CLI**:
-   - Built-in web server and command-line interface.
+   - Built-in zero-dependency web server and command-line interface.
 
 ## Installation
 
