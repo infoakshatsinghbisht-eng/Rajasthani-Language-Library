@@ -108,5 +108,145 @@
     "answer_hindi": "जूते / मोजड़ी",
     "answer_english": "Pair of Mojaris / Shoes",
     "category": "clothing"
+  },
+  {
+    "riddle": "हरी डंडी, लाल कमान। तोबो-तोबो करै इंसान।",
+    "roman": "Hari dandi, laal kamaan. Tobo-tobo karai insaan.",
+    "hindi": "हरी डंडी, लाल कमान। तीखा लगने पर तौबा-तौबा करता इंसान।",
+    "english": "Green stalk, crimson bow; whoever tastes it cries in fiery woe.",
+    "answer_rajasthani": "लाल मिरच (मथानिया री मिरच)",
+    "answer_hindi": "लाल मिर्च",
+    "answer_english": "Red chilli pepper",
+    "category": "food"
+  },
+  {
+    "riddle": "एक गुफा मांय बत्तीस सिपाही, बीच मांय एक रानी नाची।",
+    "roman": "Ek gupha maany battees sipaahi, beech maany ek raani naachi.",
+    "hindi": "एक गुफा में बत्तीस सिपाही और बीच में नाचती एक रानी।",
+    "english": "Thirty-two sentries inside a cave, with one queen dancing in the midst.",
+    "answer_rajasthani": "दांत अर जीभ",
+    "answer_hindi": "दांत और जीभ",
+    "answer_english": "Teeth and Tongue",
+    "category": "body"
+  },
+  {
+    "riddle": "चार खूंटां रो चौको, सिर पर फेर्यो हाथ। दिन भर सोवै, रात नै दे साथ।",
+    "roman": "Chaar khoontaan ro chauko, sir par pheryo haath. Din bhar sovai, raat nai de saath.",
+    "hindi": "चार पायों का ढांचा, दिन भर खाली और रात को देता विश्राम।",
+    "english": "Four-cornered frame, idle all day long, companion of the quiet night.",
+    "answer_rajasthani": "खाट / मांजी",
+    "answer_hindi": "खाट अथवा चारपाई",
+    "answer_english": "String cot (Khaat)",
+    "category": "household"
+  },
+  {
+    "riddle": "माय काठी, बेटो मलूक, पोतो गोरो-चिट्टो।",
+    "roman": "Maay kaathi, beto malook, poto goro-chitto.",
+    "hindi": "मां कठोर, बेटा कोमल और पोता दूध जैसा गोरा।",
+    "english": "Mother is tough and woody, son is tender, and grandson is snow-white.",
+    "answer_rajasthani": "कपास रो डोडा, बिनोलो अर रुई",
+    "answer_hindi": "कपास का डोडा, बिनौला और कपास/रुई",
+    "answer_english": "Cotton plant pod, seed and cotton fibre",
+    "category": "agriculture"
+  },
+  {
+    "riddle": "बिना पगां सूं दौड़ लगावै, कदैई न पाछो आवै।",
+    "roman": "Bina pagaan soon daud lagaavai, kadayee na paachho aavai.",
+    "hindi": "बिना पैरों के दौड़ता है और कभी लौटकर नहीं आता।",
+    "english": "Runs swiftly without legs and never turns back.",
+    "answer_rajasthani": "समै / बखत",
+    "answer_hindi": "समय / काल",
+    "answer_english": "Time / The fleeting moment",
+    "category": "nature"
+  },
+  {
+    "riddle": "उजळो-धोळो थान, बीच मांय सुवर्ण रो मकान। फोड़ो तो जुड़ै नीं।",
+    "roman": "Ujlo-dholo thaan, beech maany suvarn ro makaan. Phodo to judai neen.",
+    "hindi": "सफेद महल, बीच में सोने का कमरा। एक बार टूटे तो दोबारा जुड़ता नहीं।",
+    "english": "White seamless dome, golden sanctum within; once broken, can never be mended.",
+    "answer_rajasthani": "ईंडो / अंडो",
+    "answer_hindi": "अंडा",
+    "answer_english": "Egg",
+    "category": "nature"
+  },
+  {
+    "riddle": "आठ पगां रो जनावर, जाळो बणाय रह्वै। माखी-मच्छर फंसावै।",
+    "roman": "Aath pagaan ro janaavar, jaalo banaay rahvai. Maakhi-machhar phansaavai.",
+    "hindi": "आठ पैरों वाला जीव जो जाला बुनता है और कीट-पतंगों को फंसाता है।",
+    "english": "Eight-legged weaver spinning a sticky web to catch unwary flies.",
+    "answer_rajasthani": "मकड़ी / कोळी",
+    "answer_hindi": "मकड़ी",
+    "answer_english": "Spider",
+    "category": "fauna"
+  },
+  {
+    "riddle": "लोहे री काया, काठ रो हाथ। काटो जे रूंखड़ा, देवे यो साथ।",
+    "roman": "Lohe ri kaaya, kaath ro haath. Kaato je roonkhada, deve yo saath.",
+    "hindi": "लोहे का शरीर, लकड़ी का हाथ। जंगल की लकड़ी काटने का औजार।",
+    "english": "Body of iron, arm of wood; cuts through timber for daily firewood.",
+    "answer_rajasthani": "कुल्हाड़ी / कुहाड़ो",
+    "answer_hindi": "कुल्हाड़ी",
+    "answer_english": "Axe / Hatchet",
+    "category": "tools"
+  },
+  {
+    "riddle": "बिना पंखां सूं उडती जावै, डोर कटी तो गिरती आवै।",
+    "roman": "Bina pankhaan soon udti jaavai, dor kati to girti aavai.",
+    "hindi": "बिना पंखों के आकाश में उड़ती है, धागा कटते ही नीचे गिरती है।",
+    "english": "Soars into clouds without wings, plummets the instant its cord is cut.",
+    "answer_rajasthani": "पतंग (कनकटो)",
+    "answer_hindi": "पतंग",
+    "answer_english": "Kite",
+    "category": "festivals"
+  },
+  {
+    "riddle": "सूरज देखै तो खिल जावै, चांद देखै तो मुरझाय जावै।",
+    "roman": "Sooraj dekhai to khil jaavai, chaand dekhai to murjhaay jaavai.",
+    "hindi": "सूर्य को देखकर खिलता है और चंद्रमा निकलते ही मुरझा जाता है।",
+    "english": "Blooms brightly facing the blazing sun, droops when the moon rises.",
+    "answer_rajasthani": "सूरजमुखी फूल",
+    "answer_hindi": "सूरजमुखी का पुष्प",
+    "answer_english": "Sunflower",
+    "category": "flora"
+  },
+  {
+    "riddle": "ऊपर सूं पड़्यो खड़खड़ायो, नीचे आय बिखर गयो।",
+    "roman": "Oopar soon padyo khadkhadaayo, neeche aay bikhar gayo.",
+    "hindi": "आसमान से गिरा सफेद पत्थर, जमीन पर गिरते ही पिघल गया।",
+    "english": "Crashed noisy from storm clouds above, melted away on touching earth.",
+    "answer_rajasthani": "ओळा / गड़ो",
+    "answer_hindi": "ओले (बर्फ के गोले)",
+    "answer_english": "Hailstones",
+    "category": "weather"
+  },
+  {
+    "riddle": "कालो है पर काग नीं, झाड़ी मांय रह्वै पर नाग नीं।",
+    "roman": "Kaalo hai par kaag neen, jhaadi maany rahvai par naag neen.",
+    "hindi": "काला है पर कौआ नहीं, बालों की झाड़ी में रहता है पर सांप नहीं।",
+    "english": "Black but not a crow; lurks in thick hair but not a snake.",
+    "answer_rajasthani": "जूंतड़ी / जूं",
+    "answer_hindi": "जूँ (सिर का कीट)",
+    "answer_english": "Head louse",
+    "category": "body"
+  },
+  {
+    "riddle": "रात नै उगै, दिन मांय छिप जावै। चकोर उणरो ध्यान लगावै।",
+    "roman": "Raat nai ugai, din maany chhip jaavai. Chakor unro dhyaan lagaavai.",
+    "hindi": "रात को निकलता है, दिन में छिप जाता है। शीतल चांदनी फैलाता है।",
+    "english": "Rises at night, hides by day; adored by the Chakor bird.",
+    "answer_rajasthani": "चांदो / चंद्रमा",
+    "answer_hindi": "चंदा मामा / चंद्रमा",
+    "answer_english": "The Moon",
+    "category": "nature"
+  },
+  {
+    "riddle": "ऊंट री पूंछ, चाम नीं मांस। कुएं सूं खींचे पाणी री प्यास।",
+    "roman": "Oont ri poonch, chaam neen maans. Kuein soon kheenche paani ri pyaas.",
+    "hindi": "कुएं से पानी खींचने वाली मजबूत मोटी रस्सी।",
+    "english": "Twisted tail with neither skin nor flesh; draws sparkling water from the deep well.",
+    "answer_rajasthani": "लाव / चरस री रस्सा",
+    "answer_hindi": "कुएं की लाव / मोटी रस्सी",
+    "answer_english": "Well-rope (Laav)",
+    "category": "tools"
   }
 ]

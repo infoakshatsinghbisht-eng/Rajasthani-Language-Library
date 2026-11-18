@@ -95,56 +95,151 @@ Transforms active sentences into passive or impersonal voice:
 - `म्हैं काम कियो` $\rightarrow$ `म्हारै सूं काम करीज्यो`
 Use `rajasthani.transform_voice(sentence, target_voice="passive")`.
 
+### Rule 12: Reduplicated Echo Words (अनुकरणवाचक शब्द)
+Forms natural conversational echo formations:
+- `रोटी` $\rightarrow$ `रोटी-ओटी`, `पाणी` $\rightarrow$ `पाणी-धाणी`, `चाय` $\rightarrow$ `चाय-वाय`
+Use `rajasthani.build_echo_word(word)`.
+
+### Rule 13: Absolute Expressive Superlatives (सघन विशेषण)
+Expresses absolute qualities in classic folklore style:
+- `धोळो` $\rightarrow$ `धोळो-धम्मक` *(dazzling snow-white)*
+- `काळो` $\rightarrow$ `काळो-भम्मक` *(pitch obsidian-black)*
+- `मीठो` $\rightarrow$ `मीठो-मध` *(honey sweet)*
+- `रातो` $\rightarrow$ `रातो-पीळो` *(crimson-red / enraged)*
+Use `rajasthani.intensify_adjective(adjective)`.
+
+### Rule 14: Reported Speech in Vat Discourse (अप्रत्यक्ष कथन)
+Transforms direct speech into indirect narrative reported speech:
+- `राजा कह्यो कै वो काल जासी।`
+Use `rajasthani.convert_reported_speech(speaker, direct_quote)`.
+
+### Rule 15: Rhetorical Tag Questions (कथनोपकथन)
+Appends authentic Rajasthani tag question particles:
+- `थे चालो हो, नीं?` / `थे चालो हो कांईं?`
+Use `rajasthani.build_rhetorical_question(statement, tag_type="neen"/"kani"/"ke")`.
+
+### Rule 11: Absolute Expressive Superlatives (परम प्रकर्ष विशेषण)
+Produces authentic reduplicated intensifying superlatives:
+- `धोळो` $\rightarrow$ `धोळो-धम्मक` (dazzling milk-white)
+- `काळो` $\rightarrow$ `काळो-भम्मक` (pitch-black)
+- `पीळो` $\rightarrow$ `पीळो-पटक` (vibrant yellow)
+- `रातो` $\rightarrow$ `रातो-चोळ` (deep vermilion blood-red)
+- `मीठो` $\rightarrow$ `मीठो-मध` (honey-sweet)
+- `खारो` $\rightarrow$ `खारो-खट` (briny saline)
+- `कड़वो` $\rightarrow$ `कड़वो-झैर` (poisonous bitter)
+Use `rajasthani.intensify_adjective(adjective)`.
+
+### Rule 12: Reduplicated Echo Words (अनुकरणात्मक प्रतिध्वनि शब्द)
+Derives traditional echo-reduplication where onset consonants shift to vowel/o- or dh-:
+- `रोटी` $\rightarrow$ `रोटी-ओटी`
+- `पाणी` $\rightarrow$ `पाणी-धाणी`
+- `चाय` $\rightarrow$ `चाय-वाय`
+Use `rajasthani.build_echo_word(word)`.
+
+### Rule 13: Vat Narrative Reported Speech (आख्यानात्मक परोक्ष कथन)
+Transforms direct speech into indirect narrative discourse as found in classical Vats:
+- Direct: `राजा कह्यो, "म्हूँ काल जावूं।"`
+- Reported: `राजा कह्यो कै वो काल जासी।`
+Use `rajasthani.convert_reported_speech(speaker, direct_quote)`.
+
+### Rule 14: Rhetorical Question Tags (अनुप्रश्नात्मक पद)
+Appends colloquial Rajasthani pragmatic tag particles:
+- Tag `neen`: `थे चालो हो, नीं?`
+- Tag `kani`: `थे चालो हो कांईं?`
+- Tag `ke`: `थे चालो हो के?`
+Use `rajasthani.build_rhetorical_question(statement, tag_type)`.
+
+### Rule 15: Royal Politeness & Deferential Register Elevation
+Elevates basic sentences into royal / courtly Rajasthani address:
+- Replaces basic verbs with royal verbs: `खावो/जीमो` $\rightarrow$ `आरोगो सा`, `बैठो` $\rightarrow$ `विराजो सा`, `आवो` $\rightarrow$ `पधारो सा`, `जावो` $\rightarrow$ `सिधावो सा`, `बोलो` $\rightarrow$ `फरमावो सा`, `सोवो` $\rightarrow$ `पोढो सा`.
+- Injects honorific particles `सा` and `हुकम`.
+Use `rajasthani.elevate_politeness(sentence, tier="royal")`.
+
+### Rule 16: Dubitative & Speculative Mood (संदेहवाचक वाक्य)
+Constructs authentic speculative sentences using Rajasthani modal markers:
+- `शायद काल मेह बरसैला।`
+- `कदाच वो काल आवै।`
+- `हो सकै वो बात सांची होवै।`
+- `जाणै इन्द्रदेव प्रसन्न होया होवै।`
+Use `rajasthani.build_dubitative_sentence(proposition, mood_marker)`.
+
+### Rule 17: Vat Narrative Discourse Connectives (कथा संयोजक)
+Connects clauses into Vat prose discourse using classical connectives:
+- Sequential: `तदन्तर` (`Clause 1। तदन्तर Clause 2।`)
+- Consequential: `इण वास्तै` (`Clause 1, इण वास्तै Clause 2।`)
+- Adversative: `पण` (`Clause 1, पण Clause 2।`)
+- Simultaneous: `ज्यूं ही ... त्यूं ही` (`ज्यूं ही Clause 1, त्यूं ही Clause 2।`)
+Use `rajasthani.connect_discourse(clauses, relation)`.
+
+### Rule 18: Ergative Past Transitive Construction & Alignment
+Generates complete split-ergative clauses in past transitive contexts:
+- Assigns ergative postposition `नै` or oblique pronoun (`म्हैं`, `तैं`, `उण`, `ईं`).
+- Ensures the verb strictly agrees with the Direct Object in gender and number.
+Use `rajasthani.apply_ergative_construction(subject, direct_object, verb, obj_gender, obj_number)`.
+
 ---
 
-## 3. Digitized Primary Corpus Sources (37 Files, 45.52 MB)
+## 3. Digitized Primary Corpus Sources (50 Files, ~59.25 MB, 47 Cataloged Works)
 All full-text transcripts are indexed in `data_sources/corpus_catalog.json` and stored in `data_sources/raw_texts/`:
 1. `in.ernet.dli.2015.348143_sitaram_lalas_rajasthani_shabdkosh_vol4.txt` (8.67 MB): *Rajasthani Shabdkosh (Vol IV)*, Dr. Sitaram Lalas.
-2. `in.ernet.dli.2015.345971_sitaram_lalas_rajasthani_sabad_kos_vol2.txt` (6.05 MB): *Rajasthani Sabad Kos (Part 2-2)*, Sitaram Lalas.
-3. `in.ernet.dli.2015.348199_2015.348199.Dhola-Maru_djvu.txt` (2.16 MB): *Dhola Maru Ra Dhoha*, Dr. Bhagwati Lal Rajpurohit.
-4. `maheshwari_rajasthani_bhasha_sahitya_1960.txt` (2.15 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Hiralal Maheshwari.
-5. `in.ernet.dli.2015.400763_rajasthani_kahawat_kosh.txt` (1.83 MB): *Rajasthani Kahawat Kosh*, Bhagirath Kanoria.
-6. `bhati_rajasthani_madhyakal_1954.txt` (1.77 MB): *Rajasthani Sahitya Ka Madhyakal*, Dr. Narayansingh Bhati.
-7. `in.ernet.dli.2015.314052_2015.314052.Kanhadade-Prabandha_djvu.txt` (1.75 MB): *Kanhadade Prabandha (Vol 1)*, Kavi Padmanabha.
-8. `in.ernet.dli.2015.443912_2015.443912.Rajasthani-Lok_djvu.txt` (1.69 MB): *Rajasthani Lok Sahitya Ki Saidhanti Vivechna*, Sohandan Charan.
-9. `in.ernet.dli.2015.345924_prakrit_apbransh_dingal_prabhav.txt` (1.63 MB): *Prakrit Aur Apbransh Ka Dingal Sahitya Par Prabhav*, Dr. Govardhan Sharma.
-10. `bhati_dingal_geet_sahitya_1961.txt` (1.41 MB): *Dingal Geet Sahitya*, Dr. Narayansingh Bhati.
-11. `in.ernet.dli.2015.321330_2015.321330.Rajasthani-Bhasha_djvu.txt` (1.35 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Narayansingh Bhati.
-12. `in.ernet.dli.2015.444415_marwari_vyapari.txt` (1.23 MB): *Marwari Vyapari*, Giriraj Shankar Sharma.
-13. `in.ernet.dli.2015.545356_2015.545356.Krisan-Rukmani-Ri-Veli_djvu.txt` (1.15 MB): *Veli Krisan Rukmani Ri*, Rathore Prithviraj / Swami Narottamdas.
-14. `in.ernet.dli.2015.347988_rajasthani_sahitya_kosh_chand.txt` (1.13 MB): *Rajasthani Sahitya Kosh (Chhand Shastra)*, Dr. Narayansingh Bhati.
-15. `grierson_lsi_vol9_rajasthani_1908.txt` (1.03 MB): *LSI Vol. IX Part II: Rajasthani & Gujarati*, Sir George Grierson.
-16. `in.ernet.dli.2015.380463_...txt` (1.01 MB): *Veer Satsai*, Mahakavi Suryamal Misran.
-17. `padam_bhagat_rukamani_mangal_harji_ro_vyambalo_1977.txt` (1.00 MB): *Rukamani Mangal & Harji Ro Vyambalo*, Padam Bhagat.
-18. `in.ernet.dli.2015.306886_parampra_dingal_kosh.txt` (848 KB): *Parampra Dingal Kosh*, Dr. Narayansingh Bhati.
-19. `bhati_dingal_kosh_1978.txt` (788 KB): *Dingal Kosh*, Dr. Narayansingh Bhati.
-20. `ramkrishan_hindi_rajasthani_tulnatmak_1977.txt` (780 KB): *Hindi Aur Rajasthani Bhasha Ka Tulnatmak Adhyan*.
-21. `in.ernet.dli.2015.308096_...txt` (776 KB): *Rajasthani Vat Sahitya*, Dr. Poonam Daiya.
-22. `prabhakar_sahitya_sanskriti_1968.txt` (699 KB): *Rajasthani Sahitya Aur Sanskriti*, Manohar Prabhakar.
-23. `in.ernet.dli.2015.539046_dingal_me_veer_ras.txt` (622 KB): *Dingal Me Veer Ras*, Motilal Menariya.
-24. `in.ernet.dli.2015.442115_...txt` (577 KB): *Rajasthani Bhasha, Sahitya, Sanskriti*, Dr. Ramprasad Dadhich.
-25. `in.ernet.dli.2015.443965_...txt` (539 KB): *Rajasthani Lok Sahitya Adhyan Ke Aayam*, Dr. Ramprasad Dadhich.
-26. `saraswat_dingal_geet_1960.txt` (446 KB): *Dingal Geet*, Rawat Saraswat.
-27. `in.ernet.dli.2015.444198_...txt` (395 KB): *Rajasthani Nibandh*, Manohar Sharma.
-28. `tessitori_veli_krisana_rukamani_ri_asiatic_1919.txt` (390 KB): *Veli Krisana Rukamani Ri (Asiatic Society Edition)*, Dr. L.P. Tessitori.
-29. `in.ernet.dli.2015.444365_...txt` (363 KB): *Rajasthani Kahani Sangrah (Jaagati Jot)*, Ramesh Dayal.
-30. `narsi_mehta_ka_bada_mamera_marwari.txt` (294 KB): *Narsi Mehta Ka Bada Mamera*, Ram Ratan Darak.
-31. `menariya_rajasthani_rooprekha_1953.txt` (254 KB): *Rajasthani Bhasha Ki Rooprekha*, Purushottam Menariya.
-32. `tessitori_vithu_sujo_chanda_rau_jeta_si_ro_1920.txt` (232 KB): *Chhanda Rau Jeta Si Ro*, Vithu Sujo / Dr. L.P. Tessitori.
-33. `chatterji_rajasthani_bhasha_1949.txt` (108 KB): *Rajasthani Bhasha*, Dr. Suniti Kumar Chatterji.
-34. `chandra_singh_loo_1955.txt` (78 KB): *Loo (Ritu Kavya)*, Chandra Singh Birbhadur.
-*(Total corpus: 37 files, 45.52 MB / 47,731,709 bytes).*
+2. `in.ernet.dli.2015.345984_sitaram_lalas_rajasthani_sabad_kos_vol2_pt1.txt` (7.18 MB): *Rajasthani Sabad Kos (Part 2-1)*, Dr. Sitaram Lalas.
+3. `in.ernet.dli.2015.345971_sitaram_lalas_rajasthani_sabad_kos_vol2.txt` (6.05 MB): *Rajasthani Sabad Kos (Part 2-2)*, Dr. Sitaram Lalas.
+4. `in.ernet.dli.2015.348199_2015.348199.Dhola-Maru_djvu.txt` (2.16 MB): *Dhola Maru Ra Dhoha*, Dr. Bhagwati Lal Rajpurohit.
+5. `maheshwari_rajasthani_bhasha_sahitya_1960.txt` (2.15 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Hiralal Maheshwari.
+6. `in.ernet.dli.2015.400763_rajasthani_kahawat_kosh.txt` (1.83 MB): *Rajasthani Kahawat Kosh*, Bhagirath Kanoria.
+7. `bhati_rajasthani_madhyakal_1954.txt` (1.77 MB): *Rajasthani Sahitya Ka Madhyakal*, Dr. Narayansingh Bhati.
+8. `in.ernet.dli.2015.314052_2015.314052.Kanhadade-Prabandha_djvu.txt` (1.75 MB): *Kanhadade Prabandha (Vol 1)*, Kavi Padmanabha.
+9. `in.ernet.dli.2015.443912_2015.443912.Rajasthani-Lok_djvu.txt` (1.69 MB): *Rajasthani Lok Sahitya Ki Saidhanti Vivechna*, Sohandan Charan.
+10. `in.ernet.dli.2015.345924_prakrit_apbransh_dingal_prabhav.txt` (1.63 MB): *Prakrit Aur Apbransh Ka Dingal Sahitya Par Prabhav*, Dr. Govardhan Sharma.
+11. `bhati_dingal_geet_sahitya_1961.txt` (1.41 MB): *Dingal Geet Sahitya*, Dr. Narayansingh Bhati.
+12. `in.ernet.dli.2015.321330_2015.321330.Rajasthani-Bhasha_djvu.txt` (1.35 MB): *Rajasthani Bhasha Aur Sahitya*, Dr. Narayansingh Bhati.
+13. `in.ernet.dli.2015.444415_marwari_vyapari.txt` (1.23 MB): *Marwari Vyapari*, Giriraj Shankar Sharma.
+14. `in.ernet.dli.2015.445998_rajasthani_gadh_vikas_aur_prakash_pt1.txt` (1.19 MB): *Rajasthani Gadh Vikas Aur Prakash Bhag 1*, Dr. Narendra Bhanawat.
+15. `in.ernet.dli.2015.545356_2015.545356.Krisan-Rukmani-Ri-Veli_djvu.txt` (1.15 MB): *Veli Krisan Rukmani Ri*, Rathore Prithviraj / Swami Narottamdas.
+16. `in.ernet.dli.2015.347988_rajasthani_sahitya_kosh_chand.txt` (1.13 MB): *Rajasthani Sahitya Kosh (Chhand Shastra)*, Dr. Narayansingh Bhati.
+17. `in.ernet.dli.2015.442001_rajasthan_ke_aitihasik_granth_sarvekshan.txt` (1.12 MB): *Rajasthan Ke Aitihasik Granthon Ka Sarvekshana*, Dr. Narayansingh Bhati.
+18. `in.ernet.dli.2015.347791_parmpara_rajasthani_baat_sangrah.txt` (1.08 MB): *Parmpara Rajasthani Baat-Sangrah*, Dr. Narayansingh Bhati.
+19. `grierson_lsi_vol9_rajasthani_1908.txt` (1.03 MB): *LSI Vol. IX Part II: Rajasthani & Gujarati*, Sir George Grierson.
+20. `in.ernet.dli.2015.380463_...txt` (1.01 MB): *Veer Satsai*, Mahakavi Suryamal Misran.
+21. `padam_bhagat_rukamani_mangal_harji_ro_vyambalo_1977.txt` (1.00 MB): *Rukamani Mangal & Harji Ro Vyambalo*, Padam Bhagat.
+22. `in.ernet.dli.2015.538962_rajasthani_gadhya_sahitya_udbhava_vikas.txt` (924 KB): *Rajasthani Gadhya-Sahitya Udbhava Aur Vikas*, Dr. Shivswaroop Sharma.
+23. `in.ernet.dli.2015.306886_parampra_dingal_kosh.txt` (848 KB): *Parampra Dingal Kosh*, Dr. Narayansingh Bhati.
+24. `in.ernet.dli.2015.308999_rajasthani_sahitya_adi_kal.txt` (818 KB): *Rajasthani Sahitya Ka Adi Kal*, Dr. Narayansingh Bhati.
+25. `bhati_dingal_kosh_1978.txt` (788 KB): *Dingal Kosh*, Dr. Narayansingh Bhati.
+26. `ramkrishan_hindi_rajasthani_tulnatmak_1977.txt` (780 KB): *Hindi Aur Rajasthani Bhasha Ka Tulnatmak Adhyan*.
+27. `in.ernet.dli.2015.308096_...txt` (776 KB): *Rajasthani Vat Sahitya*, Dr. Poonam Daiya.
+28. `prabhakar_sahitya_sanskriti_1968.txt` (699 KB): *Rajasthani Sahitya Aur Sanskriti*, Manohar Prabhakar.
+29. `in.ernet.dli.2015.539046_dingal_me_veer_ras.txt` (622 KB): *Dingal Me Veer Ras*, Motilal Menariya.
+30. `in.ernet.dli.2015.442115_...txt` (577 KB): *Rajasthani Bhasha, Sahitya, Sanskriti*, Dr. Ramprasad Dadhich.
+31. `in.ernet.dli.2015.443965_...txt` (539 KB): *Rajasthani Lok Sahitya Adhyan Ke Aayam*, Dr. Ramprasad Dadhich.
+32. `saraswat_dingal_geet_1960.txt` (446 KB): *Dingal Geet*, Rawat Saraswat.
+33. `in.ernet.dli.2015.443715_sadayvts_veer_prabandh.txt` (414 KB): *Sadayvts Veer Prabandh*, Dr. Manjulal Majmudar.
+34: `in.ernet.dli.2015.444198_...txt` (395 KB): *Rajasthani Nibandh*, Manohar Sharma.
+35. `tessitori_veli_krisana_rukamani_ri_asiatic_1919.txt` (390 KB): *Veli Krisana Rukamani Ri (Asiatic Society Edition)*, Dr. L.P. Tessitori.
+36. `in.ernet.dli.2015.444365_...txt` (363 KB): *Rajasthani Kahani Sangrah (Jaagati Jot)*, Ramesh Dayal.
+37. `in.ernet.dli.2015.309837_rajasthani_bhag1_narottamdas_swami.txt` (361 KB): *Rajasthani (Bhag 1)*, Swami Narottamdas.
+38. `in.ernet.dli.2015.444217_rajasthan_ke_kavi_rawat_saraswat.txt` (334 KB): *Rajasthan Ke Kavi*, Rawat Saraswat.
+39. `in.ernet.dli.2015.444215_rohidai_ra_phool_manohar_sharma.txt` (308 KB): *Rohidai Ra Phool*, Dr. Manohar Sharma.
+40. `narsi_mehta_ka_bada_mamera_marwari.txt` (294 KB): *Narsi Mehta Ka Bada Mamera*, Ram Ratan Darak.
+41. `in.ernet.dli.2015.307534_rajasthani_lokotsav_gindaram_varma.txt` (268 KB): *Rajasthani Lokotsav*, Gindaram Varma.
+42. `in.ernet.dli.2015.550743_rajasthani_padh_sangrah_komal_kothari.txt` (256 KB): *Rajasthani Padh Sangrah*, Komal Kothari.
+43. `menariya_rajasthani_rooprekha_1953.txt` (254 KB): *Rajasthani Bhasha Ki Rooprekha*, Purushottam Menariya.
+44. `tessitori_vithu_sujo_chanda_rau_jeta_si_ro_1920.txt` (232 KB): *Chhanda Rau Jeta Si Ro*, Vithu Sujo / Dr. L.P. Tessitori.
+45. `in.ernet.dli.2015.547214_hadi_shatak_nathusingh_mahiyariya.txt` (146 KB): *Hadi Shatak*, Kavi Nathusingh Mahiyariya.
+46. `chatterji_rajasthani_bhasha_1949.txt` (108 KB): *Rajasthani Bhasha*, Dr. Suniti Kumar Chatterji.
+47. `chandra_singh_loo_1955.txt` (78 KB): *Loo (Ritu Kavya)*, Chandra Singh Birbhadur.
+*(Total corpus: 50 files, 59.25 MB / 62,130,394 bytes across 47 cataloged works).*
 
 ---
 
 ## 4. Lexicon, Folklore & Cultural Heritage
-- **Lexicon**: **1,204+ fully verified lemmas** with Devanagari, IAST romanization, detailed English meaning, Hindi gloss, grammatical POS, gender, dialect, and illustrative example sentences across 25+ domains.
-- **Idioms (मुहावरा)**: **42 authentic idioms** (`पगड़ी राखणी`, `खांडे री धार माथे चालणो`, `हाथ पीले करणा`, `घोड़े बेच'र सोवणो`, `घी के दीवे जळावणा`, `दांत खट्टे करणा`, `सांढणी री चाल चलणो`, `हवेली रो दीवलो`).
-- **Proverbs (कहावत / औखाणा)**: **39 traditional proverbs** (`साच नै आँच कोनी`, `गादड़ रो सींग नीं व्है`, `ऊंट किस करवट बैठै`, `धोरी रै माथै सींग, अर रजपूत रै माथै पाग`, `आप मुआं बिना सुरग नीं दीखै`).
-- **Riddles (आड़ी / बुझावळ)**: **11 traditional riddles** with solutions and cultural metaphors.
+- **Lexicon**: **1,512+ fully verified lemmas** with Devanagari, IAST romanization, detailed English meaning, Hindi gloss, grammatical POS, gender, dialect, and illustrative example sentences across 55 domains.
+- **Idioms (मुहावरा)**: **52 authentic idioms** with cultural contexts.
+- **Proverbs (कहावत / औखाणा)**: **51 traditional proverbs** with translations and contexts.
+- **Riddles (आड़ी / बुझावळ)**: **25 traditional riddles** with solutions and cultural metaphors.
 - **Lifecycle Rituals (36 items)**: Birth, childhood, marriage, seasonal fasts, and memorial rites (`मायरो/भात`, `सामेलो`, `तोरण मारणो`, `बान बैठणो`, `रातीजगो`, `हथलेवो`, `कंकण-डोरा खोलणो`, `सीख/विदाई`, `मुकलावो`).
 - **Traditional Ornaments (53 items)**: Head to toe (`रखड़ी`, `बोरलो`, `शीशफूल`, `मेमंद`, `नथ`, `बेसरी`, `आड़`, `तिमणियो`, `चंपाकली`, `हंसली`, `बाजूबंद`, `हाथीदांत रो चूड़ो`, `गोखरू`, `अरसी`, `कंदोरो`, `आंवळा`, `नेवरी`, `रमझोल`, `बिछिया`).
-- **Extended Kinship (58 relations)**: Patrilineal, matrilineal, affinal (`साढू`, `नणदोई`, `ब्याई`, `ब्याण`), clan (`गोत-भाई`), sworn (`धरम-भाई`, `पगड़ी-बदल भाई`), and wedding companions (`कामोतर`, `ओळंदी`).
+- **Extended Kinship (58 relations)**: Patrilineal, matrilineal, affinal, sworn, and ceremonial roles.
 
 ---
 
@@ -166,9 +261,9 @@ Interactive Endpoints:
 - `GET /api/rituals?category=...` - Traditional lifecycle rituals (36 entries)
 - `GET /api/ornaments?part=...` - Traditional jewelry (53 entries)
 - `GET /api/syntax` - Structured syntax, split-ergativity, causatives, and dialect rules
-- `GET /api/corpus` - Catalog of 34 digitized historical texts (45.52 MB)
-- `GET /api/idioms` - Authentic idioms and sayings (42 entries)
-- `GET /api/folklore` - Folk proverbs and riddles (50 entries)
+- `GET /api/corpus` - Catalog of 40 digitized historical texts (48.72 MB)
+- `GET /api/idioms` - Authentic idioms and sayings (52 entries)
+- `GET /api/folklore` - Folk proverbs and riddles (62 entries)
 
 ---
 
@@ -195,15 +290,23 @@ sent = rajasthani.build_complex_sentence("मेह बरस्यो", "फस
 cf = rajasthani.build_counterfactual_conditional("मेह बरसतो", "अकाल नीं पड़तो")
 # -> "जे मेह बरसतो, तो अकाल नीं पड़तो।"
 
-# 5. Causatives & Imperatives
+# 5. Echo Words & Expressive Superlatives
+echo = rajasthani.build_echo_word("रोटी")  # "रोटी-ओटी"
+intl = rajasthani.intensify_adjective("धोळो")  # "धोळो-धम्मक"
+
+# 6. Reported Speech & Rhetorical Questions
+rep = rajasthani.convert_reported_speech("राजा", "म्हूँ काल जावूं")  # "राजा कह्यो कै वो काल जासी।"
+rq = rajasthani.build_rhetorical_question("थे चालो हो", tag_type="neen")  # "थे चालो हो, नीं?"
+
+# 7. Causatives & Imperatives
 caus1 = rajasthani.generate_causative("करणो", level=1)  # "करावणो"
 imp_royal = rajasthani.build_imperative("बैठणो", politeness_level="honorific")  # "आप विराजो सा"
 
-# 6. Optatives & Folk Vat Narrative
+# 8. Optatives & Folk Vat Narrative
 blessing = rajasthani.build_optative("भगवान", "थारो भलो करै")  # "भगवान थारो भलो करै!"
 vat = rajasthani.build_vat_narrative("राव जेतासी", "बीकानेर दुर्ग", "शत्रु दल नै परास्त कियो")
 
-# 7. Clusivity & Passive Voice
+# 9. Clusivity & Passive Voice
 incl = rajasthani.convert_clusivity("हम चालेंगे", inclusive=True)  # "आपां चालेंगे"
 pass_sent = rajasthani.transform_voice("राम पोथी बांचै है")         # "राम रै हाथूं पोथी बंचीजै है।"
 ```

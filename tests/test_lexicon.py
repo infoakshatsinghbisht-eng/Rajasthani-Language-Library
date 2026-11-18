@@ -43,11 +43,11 @@ class TestLexicon(unittest.TestCase):
 
     def test_riddles(self):
         riddles = self.d.get_riddles()
-        self.assertTrue(len(riddles) >= 10)
+        self.assertTrue(len(riddles) >= 25)
 
     def test_word_count(self):
         words = self.d.get_all_words()
-        self.assertTrue(len(words) >= 1200)
+        self.assertTrue(len(words) >= 1500)
 
     def test_morphology_paradigms(self):
         p_noun = rajasthani.generate_noun_paradigm("घोड़ो")

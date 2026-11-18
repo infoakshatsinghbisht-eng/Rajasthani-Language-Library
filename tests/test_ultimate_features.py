@@ -150,19 +150,60 @@ class TestUltimateFeatures(unittest.TestCase):
     def test_voice_transformation(self):
         v1 = rajasthani.transform_voice("राम पोथी बांचै है")
         self.assertIn("बंचीजै", v1)
+        # Bidirectional test: passive -> active
+        v_act = rajasthani.transform_voice("राम रै हाथूं पोथी बंचीजै है", target_voice="active")
+        self.assertIn("बांचै है", v_act)
 
-    def test_wave7_texts_and_corpus_catalog(self):
+    def test_wave9_texts_and_corpus_catalog(self):
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         cat_file = os.path.join(base_dir, "data_sources", "corpus_catalog.json")
         with open(cat_file, "r", encoding="utf-8") as f:
             cat = json.load(f)
-        self.assertGreaterEqual(len(cat), 34)
+        self.assertGreaterEqual(len(cat), 45)
 
         # Check total size of digitized raw texts
         raw_dir = os.path.join(base_dir, "data_sources", "raw_texts")
         files = os.listdir(raw_dir)
         total_bytes = sum(os.path.getsize(os.path.join(raw_dir, f)) for f in files)
-        self.assertGreaterEqual(total_bytes, 45 * 1024 * 1024)
+        self.assertGreaterEqual(total_bytes, 55 * 1024 * 1024)
+
+    def test_elevate_politeness(self):
+        p1 = rajasthani.elevate_politeness("अठै बैठो", tier="royal")
+        self.assertIn("विराजो सा", p1)
+        self.assertIn("हुकम", p1)
+
+        p2 = rajasthani.elevate_politeness("खाना खावो", tier="polite")
+        self.assertIn("आरोगो सा", p2)
+
+    def test_dubitative_mood(self):
+        d1 = rajasthani.build_dubitative_sentence("काल मेह बरसैला", mood_marker="shyad")
+        self.assertEqual(d1, "शायद काल मेह बरसैला।")
+
+        d2 = rajasthani.build_dubitative_sentence("वो बात सांची होवै", mood_marker="ho_sake")
+        self.assertEqual(d2, "हो सकै वो बात सांची होवै।")
+
+    def test_connect_discourse(self):
+        c_seq = rajasthani.connect_discourse(["राजाजी दरबार लगायो", "कवि नै इनाम दियो"], relation="sequential")
+        self.assertEqual(c_seq, "राजाजी दरबार लगायो। तदन्तर कवि नै इनाम दियो।")
+
+        c_con = rajasthani.connect_discourse(["काल मेह घणो बरस्यो", "सरोवर भर गया"], relation="consequential")
+        self.assertEqual(c_con, "काल मेह घणो बरस्यो, इण वास्तै सरोवर भर गया।")
+
+        c_adv = rajasthani.connect_discourse(["म्हूँ गयो", "वो नीं मिल्यो"], relation="adversative")
+        self.assertEqual(c_adv, "म्हूँ गयो, पण वो नीं मिल्यो।")
+
+    def test_apply_ergative_construction(self):
+        erg = rajasthani.apply_ergative_construction(
+            subject="राम",
+            direct_object="रोटी",
+            verb="खाणो",
+            obj_gender="feminine",
+            obj_number="singular"
+        )
+        self.assertEqual(erg["subject_ergative"], "राम नै")
+        self.assertEqual(erg["verb_form"], "खाई")
+        self.assertEqual(erg["sentence"], "राम नै रोटी खाई।")
+        self.assertEqual(erg["agreement_target"], "direct_object")
 
     def test_counterfactual_conditional(self):
         cf = rajasthani.build_counterfactual_conditional("मेह बरसतो", "अकाल नीं पड़तो")
@@ -182,12 +223,36 @@ class TestUltimateFeatures(unittest.TestCase):
         self.assertIn("राव जेतासी", vat)
         self.assertIn("आनंद मंगल भयो।", vat)
 
+    def test_echo_words(self):
+        e1 = rajasthani.build_echo_word("रोटी")
+        self.assertEqual(e1, "रोटी-ओटी")
+        e2 = rajasthani.build_echo_word("पाणी")
+        self.assertEqual(e2, "पाणी-धाणी")
+        e3 = rajasthani.build_echo_word("चाय")
+        self.assertEqual(e3, "चाय-वाय")
+
+    def test_intensify_adjective(self):
+        self.assertEqual(rajasthani.intensify_adjective("धोळो"), "धोळो-धम्मक")
+        self.assertEqual(rajasthani.intensify_adjective("काळो"), "काळो-भम्मक")
+        self.assertEqual(rajasthani.intensify_adjective("मीठो"), "मीठो-मध")
+
+    def test_reported_speech(self):
+        rs = rajasthani.convert_reported_speech("राजा", "म्हूँ काल जावूं")
+        self.assertIn("राजा कह्यो कै", rs)
+        self.assertIn("जासी", rs)
+
+    def test_rhetorical_questions(self):
+        rq1 = rajasthani.build_rhetorical_question("थे चालो हो", tag_type="neen")
+        self.assertEqual(rq1, "थे चालो हो, नीं?")
+        rq2 = rajasthani.build_rhetorical_question("थे चालो हो", tag_type="kani")
+        self.assertEqual(rq2, "थे चालो हो कांईं?")
+
     def test_proverbs_and_idioms_scale(self):
         proverbs = rajasthani.get_proverbs()
-        self.assertGreaterEqual(len(proverbs), 35)
+        self.assertGreaterEqual(len(proverbs), 50)
 
         idioms = rajasthani.get_idioms()
-        self.assertGreaterEqual(len(idioms), 40)
+        self.assertGreaterEqual(len(idioms), 50)
 
 
 if __name__ == "__main__":

@@ -334,5 +334,85 @@
     "hindi": "ऐन वक्त पर साफ इनकार कर देना",
     "cultural_context": "Colloquial idiom denoting refusal of promised assistance.",
     "example": "मदद करण रो कह'र अंत में अंगूठो देखाय दियो।"
+  },
+  {
+    "rajasthani": "आंख्यां में धूळ झोंकणी",
+    "roman": "aankhyaan mein dhool jhonkani",
+    "hindi": "धोखा देना / भ्रमित करना",
+    "english": "to throw dust in someone's eyes; to deceive slyly",
+    "cultural_context": "Common desert expression drawing imagery from dust storms.",
+    "example": "शत्रु आंख्यां में धूळ झोंक'र भाग नीकळ्यो।"
+  },
+  {
+    "rajasthani": "पग जमावणा",
+    "roman": "pag jamaavna",
+    "hindi": "स्थिति को सुदृढ़ बनाना / प्रभुत्व स्थापित करना",
+    "english": "to plant feet firmly; to establish strong standing",
+    "cultural_context": "Commercial and political idiom of Marwari merchants settling new mandis.",
+    "example": "व्यापार में सेठ जी आपरा पग जमाया।"
+  },
+  {
+    "rajasthani": "बात रो बतंगड़ बणावणो",
+    "roman": "baat ro batangad banaavno",
+    "hindi": "राई का पहाड़ बनाना / छोटी बात को तूल देना",
+    "english": "to blow a tiny matter completely out of proportion",
+    "cultural_context": "Domestic critique of needless squabbling.",
+    "example": "छोटी सी बात रो बतंगड़ बणाय दियो।"
+  },
+  {
+    "rajasthani": "जी जलणो",
+    "roman": "jee jalno",
+    "hindi": "ईर्ष्या अथवा अत्यधिक दुःख होना",
+    "english": "to burn with deep anguish or envy",
+    "cultural_context": "Emotional description of deep heartache.",
+    "example": "दूसरे री तरक्की देख'र दुर्जन रो जी जलै।"
+  },
+  {
+    "rajasthani": "पसीना रो मोल चुकावणो",
+    "roman": "paseena ro mol chukaavno",
+    "hindi": "कठिन परिश्रम का उचित प्रतिफल देना",
+    "english": "to honor the worth of hard labor and sweat",
+    "cultural_context": "Ethical guidance for employers and landlords in Rajasthan.",
+    "example": "मजदूर रै पसीने रो पूरो मोल चुकायो।"
+  },
+  {
+    "rajasthani": "कलेजे ठंडक पड़णी",
+    "roman": "kaleje thandak padni",
+    "hindi": "परम शांति व संतोष का अनुभव होना",
+    "english": "to experience soothing peace and fulfillment in heart",
+    "cultural_context": "Signifies joy of reunited kin or resolved crisis in desert heat.",
+    "example": "बेटे ने सकुशल देख'र मां रै कलेजे ठंडक पड़ी।"
+  },
+  {
+    "rajasthani": "नाक कटवावणी",
+    "roman": "naak katwaavni",
+    "hindi": "प्रतिष्ठा नष्ट करना / कुल को लज्जित करना",
+    "english": "to bring public disgrace upon family dignity",
+    "cultural_context": "Strict social commentary on maintaining honor.",
+    "example": "गलत काम कर'र खानदान री नाक कटवाई।"
+  },
+  {
+    "rajasthani": "हथेली माथे सरसूं उगावणी",
+    "roman": "hatheli maathe sarsoon ugaavni",
+    "hindi": "असंभव कार्य को तुरंत करने का दावा करना",
+    "english": "to claim to sprout mustard on one's palm (attempting the impossible)",
+    "cultural_context": "Folk adage rebuking unrealistic promises.",
+    "example": "एक दिन में हवेली बणावणो तो हथेली माथे सरसूं उगावण ज्यूं है।"
+  },
+  {
+    "rajasthani": "पाणी-पाणी व्हैणो",
+    "roman": "paani-paani hvaino",
+    "hindi": "अत्यधिक लज्जित होना",
+    "english": "to drown in intense embarrassment and shame",
+    "cultural_context": "Common colloquial expression.",
+    "example": "चोरी पकड़ी जात ही वो पाणी-पाणी होय गयो।"
+  },
+  {
+    "rajasthani": "सिर माथे चढ़णा",
+    "roman": "sir maathe chadhna",
+    "hindi": "अत्यधिक लाड़-प्यार से बिगड़ जाना",
+    "english": "to become spoiled through excess indulgence",
+    "cultural_context": "Domestic parenting observation in joint households.",
+    "example": "अति लाड सूं बालक सिर माथे चढ़ गयो।"
   }
 ]

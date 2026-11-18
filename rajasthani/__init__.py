@@ -137,6 +137,14 @@ from rajasthani.grammar import (
     build_counterfactual_conditional,
     build_optative,
     build_vat_narrative,
+    build_echo_word,
+    intensify_adjective,
+    convert_reported_speech,
+    build_rhetorical_question,
+    elevate_politeness,
+    build_dubitative_sentence,
+    connect_discourse,
+    apply_ergative_construction,
 )
 
 # Lexicon & Dictionary
@@ -331,6 +339,14 @@ __all__ = [
     "build_counterfactual_conditional",
     "build_optative",
     "build_vat_narrative",
+    "build_echo_word",
+    "intensify_adjective",
+    "convert_reported_speech",
+    "build_rhetorical_question",
+    "elevate_politeness",
+    "build_dubitative_sentence",
+    "connect_discourse",
+    "apply_ergative_construction",
     # Lexicon
     "Word",
     "Dictionary",

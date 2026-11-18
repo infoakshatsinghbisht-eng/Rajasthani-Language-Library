@@ -452,7 +452,164 @@ class SyntaxEngine:
                 s = s.replace("लिखै है", "लिखीजै है").replace("लिखै", "लिखीजै")
             elif "चाल" in s:
                 s = s.replace("चाल सकाँ कोनी", "चालीजै कोनी").replace("चाल सकै कोनी", "चालीजै कोनी")
+        elif target_voice.lower() == "active":
+            # Reverse agent transformations: Passive -> Active
+            rev_agent = {
+                "म्हारै सूं": "म्हूँ",
+                "थारै सूं": "थूँ",
+                "उण रै सूं": "वो",
+                "आपां रै सूं": "आपां",
+            }
+            for k, v in rev_agent.items():
+                if s.startswith(k + " "):
+                    s = v + s[len(k):]
+                    break
+            else:
+                s = re.sub(r"^(\S+)\s+रै\s+हाथूं", r"\1", s)
+
+            # Reverse verb passivization
+            s = s.replace("बंचीजै है", "बांचै है").replace("बंचीजै", "बांचै")
+            s = s.replace("करीजै है", "करै है").replace("करीजै", "करै")
+            s = s.replace("लिखीजै है", "लिखै है").replace("लिखीजै", "लिखै")
+            s = s.replace("चालीजै कोनी", "चाल सकै कोनी")
         return f"{s}।"
+
+    def elevate_politeness(self, sentence: str, tier: str = "royal") -> str:
+        """
+        Elevates a standard sentence to high Rajasthani polite or royal register:
+        - Inserts royal verbs: खावो/जीमो -> आरोगो सा, बैठो -> विराजो सा, आवो -> पधारो सा,
+          जावो -> सिधावो सा, बोलो -> फरमावो सा, सोवो -> पोढो सा.
+        - Appends respectful markers सा / हुकम.
+        """
+        s = sentence.strip().rstrip("।").strip()
+        royal_replacements = [
+            ("खावो", "आरोगो सा"),
+            ("जीमो", "आरोगो सा"),
+            ("बैठो", "विराजो सा"),
+            ("आवो", "पधारो सा"),
+            ("जावो", "सिधावो सा"),
+            ("बोलो", "फरमावो सा"),
+            ("सोवो", "पोढो सा"),
+        ]
+        for src, repl in royal_replacements:
+            if src in s:
+                s = s.replace(src, repl)
+                break
+        else:
+            if not s.endswith("सा") and not s.endswith("हुकम"):
+                s = f"{s} सा"
+
+        if tier.lower() == "royal" and not s.endswith("हुकम"):
+            s = f"{s} हुकम"
+
+        return f"{s}।"
+
+    def build_dubitative_sentence(
+        self,
+        proposition: str,
+        mood_marker: str = "shyad",
+    ) -> str:
+        """
+        Constructs an authentic Rajasthani dubitative / speculative mood sentence (संदेहवाचक).
+        Markers:
+        - 'shyad' / 'shayad': शायद <proposition>ला (e.g. 'शायद काल मेह बरसैला।')
+        - 'kadach': कदाच <proposition> (e.g. 'कदाच वो काल आवै।')
+        - 'ho_sake': हो सकै <proposition> (e.g. 'हो सकै वो बात सांची होवै।')
+        - 'jaane': जाणै <proposition> (e.g. 'जाणै इन्द्रदेव प्रसन्न होया होवै।')
+        """
+        prop = proposition.strip().rstrip("।").strip()
+        m = mood_marker.lower()
+        if m in ["shyad", "shayad"]:
+            return f"शायद {prop}।"
+        elif m == "kadach":
+            return f"कदाच {prop}।"
+        elif m in ["ho_sake", "hosake"]:
+            return f"हो सकै {prop}।"
+        elif m == "jaane":
+            return f"जाणै {prop}।"
+        else:
+            return f"शायद {prop}।"
+
+    def connect_discourse(
+        self,
+        clauses: List[str],
+        relation: str = "consequential",
+    ) -> str:
+        """
+        Connects clauses into Vat narrative discourse using classical Rajasthani connectives:
+        - 'sequential': Clause 1। तदन्तर Clause 2।
+        - 'consequential': Clause 1, इण वास्तै Clause 2।
+        - 'adversative': Clause 1, पण Clause 2।
+        - 'simultaneous': ज्यूं ही Clause 1, त्यूं ही Clause 2।
+        """
+        if not clauses:
+            return ""
+        if len(clauses) == 1:
+            return clauses[0].strip().rstrip("।") + "।"
+
+        c1 = clauses[0].strip().rstrip("।").strip()
+        c2 = clauses[1].strip().rstrip("।").strip()
+        rel = relation.lower()
+
+        if rel == "sequential":
+            return f"{c1}। तदन्तर {c2}।"
+        elif rel == "consequential":
+            return f"{c1}, इण वास्तै {c2}।"
+        elif rel == "adversative":
+            return f"{c1}, पण {c2}।"
+        elif rel == "simultaneous":
+            return f"ज्यूं ही {c1}, त्यूं ही {c2}।"
+        else:
+            return f"{c1}, फेर {c2}।"
+
+    def apply_ergative_construction(
+        self,
+        subject: str,
+        direct_object: str,
+        verb: str,
+        obj_gender: str = "masculine",
+        obj_number: str = "singular",
+    ) -> Dict[str, str]:
+        """
+        Applies split ergativity in Rajasthani past transitive clauses:
+        - Subject takes ergative case marker 'नै' or oblique pronoun form (म्हैं, तैं, उण, ईं).
+        - Verb strictly agrees with direct object in gender and number, NOT with subject.
+        """
+        subj = subject.strip()
+        if subj == "म्हूँ":
+            subj_erg = "म्हैं"
+        elif subj == "थूँ":
+            subj_erg = "तैं"
+        elif subj in ["ओ", "यो"]:
+            subj_erg = "ईं"
+        elif subj == "वो":
+            subj_erg = "उण"
+        elif not subj.endswith("नै"):
+            subj_erg = f"{subj} नै"
+        else:
+            subj_erg = subj
+
+        g = Gender.FEMININE if obj_gender.lower() == "feminine" else Gender.MASCULINE
+        n = GrammaticalNumber.PLURAL if obj_number.lower() == "plural" else GrammaticalNumber.SINGULAR
+
+        v_form = conjugate(
+            verb,
+            tense=Tense.PAST,
+            person=Person.THIRD,
+            gender=g,
+            number=n,
+            dialect=self.dialect,
+        )
+
+        sentence = f"{subj_erg} {direct_object} {v_form}।"
+        return {
+            "sentence": sentence,
+            "subject_ergative": subj_erg,
+            "direct_object": direct_object,
+            "verb_form": v_form,
+            "agreement_target": "direct_object",
+            "explanation": f"Past transitive verb '{verb}' agrees with direct object '{direct_object}' ({obj_gender} {obj_number}), while subject '{subject}' takes ergative case '{subj_erg}'."
+        }
 
     def build_counterfactual_conditional(
         self,
@@ -499,6 +656,94 @@ class SyntaxEngine:
             f"एक समै री बात है। {setting} मांय {protagonist} रह्वै थो। "
             f"तद उण {deed}। कथा पूरी भई, आनंद मंगल भयो।"
         )
+
+    def build_echo_word(self, word: str) -> str:
+        """
+        Derives traditional Rajasthani reduplicated echo words (अनुकरणवाचक शब्द).
+        Examples: 'रोटी' -> 'रोटी-ओटी', 'पाणी' -> 'पाणी-धाणी', 'चाय' -> 'चाय-वाय'
+        """
+        w = word.strip()
+        echo_dict = {
+            "रोटी": "रोटी-ओटी",
+            "पाणी": "पाणी-धाणी",
+            "चाय": "चाय-वाय",
+            "काम": "काम-काज",
+            "बात": "बात-चीत",
+            "दाल": "दाल-रोटी",
+            "गुड़": "गुड़-धाणी",
+        }
+        if w in echo_dict:
+            return echo_dict[w]
+        # Generic phonological alternation: replace initial consonant with 'व'
+        if w and w[0] in "कखगघचछजझटठडढतथदधनपफबभमयरलशषसह":
+            return f"{w}-व{w[1:]}"
+        return f"{w}-{w}"
+
+    def intensify_adjective(self, adjective: str) -> str:
+        """
+        Produces absolute expressive superlative forms in traditional Rajasthani literature.
+        Examples:
+          - 'धोळो' -> 'धोळो-धम्मक' (dazzling white)
+          - 'काळो' -> 'काळो-भम्मक' (pitch black)
+          - 'रातो' -> 'रातो-पीळो' (crimson/enraged)
+          - 'पीळो' -> 'पीळो-पटक्क' (radiant yellow)
+          - 'लीलो' -> 'लीलो-छम्मक' (lush green)
+          - 'मीठो' -> 'मीठो-मध' (honey sweet)
+          - 'खाटो' -> 'खाटो-चूर' (extremely sour)
+          - 'कड़वो' -> 'कड़वो-झहर' (bitter as venom)
+          - 'तातो' -> 'तातो-खींच' (scalding hot)
+          - 'ठंडो' -> 'ठंडो-बर्फ' (ice cold)
+        """
+        adj = adjective.strip()
+        INTENSIFIERS = {
+            "धोळो": "धोळो-धम्मक",
+            "काळो": "काळो-भम्मक",
+            "रातो": "रातो-पीळो",
+            "पीळो": "पीळो-पटक्क",
+            "लीलो": "लीलो-छम्मक",
+            "मीठो": "मीठो-मध",
+            "खाटो": "खाटो-चूर",
+            "कड़वो": "कड़वो-झहर",
+            "तातो": "तातो-खींच",
+            "ठंडो": "ठंडो-बर्फ",
+        }
+        return INTENSIFIERS.get(adj, f"{adj}-{adj}")
+
+    def convert_reported_speech(self, speaker: str, direct_quote: str) -> str:
+        """
+        Transforms direct speech into indirect narrative reported speech in Rajasthani Vat style.
+        Formula: <speaker> कह्यो कै <indirect_sentence>
+        Example: convert_reported_speech('राजा', 'म्हूँ काल जावूं') -> 'राजा कह्यो कै वो काल जासी।'
+        """
+        spk = speaker.strip()
+        quote = direct_quote.strip().strip('"').strip("'").rstrip("।").strip()
+
+        def _sub_token(pattern: str, repl: str, s: str) -> str:
+            return re.sub(rf"(?:(?<=^)|(?<=\s))({pattern})(?=\s|$|[।?,.!])", repl, s)
+
+        # Pronoun and verbal shifts
+        shifted = _sub_token("म्हूँ", "वो", quote)
+        shifted = _sub_token("म्हैं", "उण", shifted)
+        shifted = _sub_token("जावूं", "जासी", shifted)
+        shifted = _sub_token("आऊं", "आवसी", shifted)
+        shifted = _sub_token("करूं", "करसी", shifted)
+        shifted = _sub_token("खाऊं", "खासी", shifted)
+        return f"{spk} कह्यो कै {shifted}।"
+
+    def build_rhetorical_question(self, statement: str, tag_type: str = "neen") -> str:
+        """
+        Constructs conversational and rhetorical questions with authentic Rajasthani tag particles:
+        - 'neen': ... नीं? (e.g. 'थे चालो हो, नीं?')
+        - 'kani': ... कांईं? (e.g. 'थे चालो हो कांईं?')
+        - 'ke': ... के? (e.g. 'थे चालो हो के?')
+        """
+        s = statement.strip().rstrip("।").rstrip("?").rstrip(",")
+        tt = tag_type.lower()
+        if tt == "kani":
+            return f"{s} कांईं?"
+        elif tt == "ke":
+            return f"{s} के?"
+        return f"{s}, नीं?"
 
     def explain_syntax_rules(self) -> Dict[str, any]:
         """
@@ -657,3 +902,51 @@ def build_vat_narrative(
 ) -> str:
     """Convenience function: constructs traditional Rajasthani Vat narrative prose."""
     return SyntaxEngine().build_vat_narrative(protagonist=protagonist, setting=setting, deed=deed)
+
+
+def build_echo_word(word: str) -> str:
+    """Convenience function: derives traditional Rajasthani reduplicated echo word."""
+    return SyntaxEngine().build_echo_word(word)
+
+
+def intensify_adjective(adjective: str) -> str:
+    """Convenience function: produces absolute expressive superlative forms in Rajasthani."""
+    return SyntaxEngine().intensify_adjective(adjective)
+
+
+def convert_reported_speech(speaker: str, direct_quote: str) -> str:
+    """Convenience function: transforms direct speech into indirect narrative reported speech."""
+    return SyntaxEngine().convert_reported_speech(speaker, direct_quote)
+
+
+def build_rhetorical_question(statement: str, tag_type: str = "neen") -> str:
+    """Convenience function: constructs rhetorical question with Rajasthani tag particles."""
+    return SyntaxEngine().build_rhetorical_question(statement, tag_type=tag_type)
+
+
+def elevate_politeness(sentence: str, tier: str = "royal") -> str:
+    """Convenience function: elevates sentence into polite or royal Rajasthani register."""
+    return SyntaxEngine().elevate_politeness(sentence, tier=tier)
+
+
+def build_dubitative_sentence(proposition: str, mood_marker: str = "shyad") -> str:
+    """Convenience function: constructs Rajasthani dubitative / speculative mood sentence."""
+    return SyntaxEngine().build_dubitative_sentence(proposition, mood_marker=mood_marker)
+
+
+def connect_discourse(clauses: List[str], relation: str = "consequential") -> str:
+    """Convenience function: connects narrative clauses in Vat style."""
+    return SyntaxEngine().connect_discourse(clauses, relation=relation)
+
+
+def apply_ergative_construction(
+    subject: str,
+    direct_object: str,
+    verb: str,
+    obj_gender: str = "masculine",
+    obj_number: str = "singular",
+) -> Dict[str, str]:
+    """Convenience function: applies split ergative case assignment and object-verb agreement."""
+    return SyntaxEngine().apply_ergative_construction(
+        subject, direct_object, verb, obj_gender=obj_gender, obj_number=obj_number
+    )
